@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foros SLP Digital - Provincia San Luis Potosí</title>
+    <style>
+        /* ===== RESET Y VARIABLES INSTITUCIONALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            /* Colores institucionales extraídos de los manuales oficiales */
+            --morado-scouts: #6A2C8E;      /* Morado del logo Scouts de México */
+            --verde-scouts: #00A650;       /* Verde de la flor de lis */
+            --rojo-scouts: #E30613;        /* Rojo del texto SCOUTS */
+            --azul-slp: #1B3A6B;           /* Azul de la Provincia SLP */
+            --dorado-slp: #F2A900;         /* Dorado del logo SLP */
+            --verde-caminantes: #4CAF50;   /* Verde de la guía de Caminantes */
+            --azul-caminantes: #2196F3;    /* Azul de la guía de Caminantes */
+            --rojo-rovers: #E30613;        /* Rojo de la guía de Rovers */
+            --naranja-rovers: #FF9800;     /* Naranja de la guía de Rovers */
+            --morado-scouts-rama: #9C27B0; /* Morado de la guía de Scouts */
+            --gris-claro: #f5f5f5;
+            --gris-medio: #e0e0e0;
+            --gris-oscuro: #333;
+            --blanco: #ffffff;
+            --sombra: 0 4px 12px rgba(0,0,0,0.1);
+            --radio: 12px;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--morado-scouts) 0%, var(--azul-slp) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .app-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            background: var(--blanco);
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* ===== PANTALLA DE LOGIN ===== */
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--morado-scouts) 0%, var(--azul-slp) 100%);
+        }
+
+        .login-card {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .login-card .logo-login {
+            width: 120px;
+            margin-bottom: 16px;
+        }
+
+        .login-card h1 {
+            color: var(--azul-slp);
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .login-card .subtitle {
+            color: var(--gris-oscuro);
+            font-size: 14px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .login-card .fecha {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .login-card input, .login-card select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 2px solid var(--gris-medio);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .login-card input:focus, .login-card select:focus {
+            border-color: var(--verde-scouts);
+            outline: none;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: var(--verde-scouts);
+            color: var(--blanco);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background: #008a42;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary:disabled {
+            background: var(--gris-medio);
+            cursor: not-allowed;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(90deg, var(--morado-scouts), var(--azul-slp));
+            color: var(--blanco);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-left .logo-header {
+            height: 40px;
+        }
+
+        .header-left h2 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-right .user-info {
+            font-size: 13px;
+            text-align: right;
+        }
+
+        .header-right .user-info small {
+            display: block;
+            opacity: 0.8;
+            font-size: 11px;
+        }
+
+        .header-right button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--blanco);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        .header-right button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 220px;
+            background: var(--gris-claro);
+            padding: 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            overflow-y: auto;
+        }
+
+        .sidebar button {
+            background: none;
+            border: none;
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 13px;
+            color: var(--gris-oscuro);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.3s, border-left 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar button:hover {
+            background: var(--gris-medio);
+        }
+
+        .sidebar button.active {
+            background: var(--blanco);
+            border-left-color: var(--verde-scouts);
+            font-weight: 600;
+            color: var(--azul-slp);
+        }
+
+        .sidebar button .icon {
+            font-size: 18px;
+        }
+
+        /* ===== ÁREA DE CONTENIDO ===== */
+        .content-area {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: var(--blanco);
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: var(--azul-slp);
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        /* ===== TARJETAS ===== */
+        .card {
+            background: var(--blanco);
+            border: 1px solid var(--gris-medio);
+            border-radius: var(--radio);
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-header h3 {
+            font-size: 16px;
+            color: var(--gris-oscuro);
+        }
+
+        .card-body p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        /* ===== BADGES ===== */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-success { background: #E8F5E9; color: #2E7D32; }
+        .badge-warning { background: #FFF3E0; color: #E65100; }
+        .badge-danger { background: #FFEBEE; color: #C62828; }
+        .badge-info { background: #E3F2FD; color: #1565C0; }
+        .badge-morado { background: #F3E5F5; color: #6A2C8E; }
+
+        /* ===== BOTONES SECUNDARIOS ===== */
+        .btn-secondary {
+            padding: 10px 20px;
+            background: var(--azul-slp);
+            color: var(--blanco);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #142c52;
+        }
+
+        .btn-secondary:disabled {
+            background: var(--gris-medio);
+            cursor: not-allowed;
+        }
+
+        .btn-outline {
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--azul-slp);
+            border: 2px solid var(--azul-slp);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--azul-slp);
+            color: var(--blanco);
+        }
+
+        .btn-voto {
+            padding: 12px 24px;
+            background: var(--verde-scouts);
+            color: var(--blanco);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .btn-voto:hover {
+            background: #008a42;
+        }
+
+        .btn-voto:disabled {
+            background: var(--gris-medio);
+            cursor: not-allowed;
+        }
+
+        /* ===== GRID DE CANDIDATOS ===== */
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .candidate-card {
+            background: var(--blanco);
+            border: 1px solid var(--gris-medio);
+            border-radius: var(--radio);
+            padding: 16px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .candidate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .candidate-card .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--morado-scouts), var(--azul-slp));
+            color: var(--blanco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 auto 12px;
+        }
+
+        .candidate-card h4 {
+            font-size: 16px;
+            color: var(--gris-oscuro);
+            margin-bottom: 4px;
+        }
+
+        .candidate-card .group {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .candidate-card .position {
+            font-size: 12px;
+            color: var(--azul-slp);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .candidate-card .propuesta {
+            font-size: 12px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: var(--gris-claro);
+            border-radius: 6px;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal h3 {
+            font-size: 20px;
+            color: var(--azul-slp);
+            margin-bottom: 12px;
+        }
+
+        .modal p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .modal .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        /* ===== NOTIFICACIÓN TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--gris-oscuro);
+            color: var(--blanco);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 2000;
+            max-width: 350px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.success { background: var(--verde-scouts); }
+        .toast.error { background: var(--rojo-scouts); }
+        .toast.info { background: var(--azul-slp); }
+        .toast.morado { background: var(--morado-scouts); }
+
+        /* ===== PROGRESO ===== */
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--gris-medio);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--verde-scouts);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-container {
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .sidebar {
+                width: 60px;
+            }
+
+            .sidebar button .label {
+                display: none;
+            }
+
+            .sidebar button {
+                justify-content: center;
+                padding: 14px;
+            }
+
+            .header-left h2 {
+                font-size: 12px;
+            }
+
+            .header-right .user-info {
+                display: none;
+            }
+
+            .candidates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- ===== PANTALLA DE LOGIN ===== -->
+    <div id="login-screen">
+        <div class="login-card">
+            <!-- Logo simbólico (reemplazar con el logo real de SLP) -->
+            <div style="font-size: 48px; margin-bottom: 8px;">⚜️</div>
+            <h1>Foros SLP Digital</h1>
+            <p class="subtitle">Provincia San Luis Potosí</p>
+            <p class="fecha">13 y 14 de febrero de 2027</p>
+            <input type="text" id="login-cum" placeholder="CUM (Clave Única de Miembro)" value="SLP12345">
+            <input type="date" id="login-fecha" value="2005-06-15">
+            <select id="login-rol">
+                <option value="caminante">Caminante</option>
+                <option value="rover">Rover</option>
+                <option value="scout">Scout</option>
+                <option value="provincia">Dirigente / Provincia</option>
+            </select>
+            <button class="btn-primary" onclick="login()">Ingresar al Foro</button>
+            <p style="margin-top: 16px; font-size: 11px; color: #999;">
+                Demo: Cualquier CUM funciona. Selecciona tu rol.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== APLICACIÓN PRINCIPAL ===== -->
+    <div id="app-screen" class="hidden" style="height: 100%; display: flex; flex-direction: column;">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-left">
+                <span style="font-size: 28px;">⚜️</span>
+                <h2 id="header-title">Foro Provincial de Caminantes 2027</h2>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="header-user">Juan Pérez</span>
+                    <small id="header-role">Caminante - Grupo 1 Tequihua</small>
+                </div>
+                <button onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="main-content">
+
+            <!-- SIDEBAR -->
+            <div class="sidebar" id="sidebar">
+                <button class="active" onclick="showSection('dashboard', this)">
+                    <span class="icon">🏠</span>
+                    <span class="label">Inicio</span>
+                </button>
+                <button onclick="showSection('participantes', this)">
+                    <span class="icon">👥</span>
+                    <span class="label">Participantes</span>
+                </button>
+                <button onclick="showSection('agenda', this)">
+                    <span class="icon">📅</span>
+                    <span class="label">Agenda</span>
+                </button>
+                <button onclick="showSection('candidaturas', this)">
+                    <span class="icon">⭐</span>
+                    <span class="label">Candidaturas</span>
+                </button>
+                <button onclick="showSection('recomendaciones', this)">
+                    <span class="icon">📄</span>
+                    <span class="label">Recomendaciones</span>
+                </button>
+                <button onclick="showSection('elecciones', this)">
+                    <span class="icon">🗳️</span>
+                    <span class="label">Elecciones</span>
+                </button>
+                <button onclick="showSection('actas', this)">
+                    <span class="icon">📁</span>
+                    <span class="label">Actas</span>
+                </button>
+            </div>
+
+            <!-- ÁREA DE CONTENIDO -->
+            <div class="content-area" id="content-area">
+                <!-- El contenido se carga dinámicamente con JS -->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== MODAL DE CONFIRMACIÓN ===== -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+        <h3 id="modal-title">Confirmar Voto</h3>
+        <p id="modal-message">¿Estás seguro? Este voto es definitivo y no podrás cambiarlo.</p>
+        <div class="modal-buttons">
+            <button class="btn-outline" onclick="closeModal()">Cancelar</button>
+            <button class="btn-primary" style="width: auto;" onclick="confirmVote()">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TOAST DE NOTIFICACIÓN ===== -->
+<div class="toast" id="toast"></div>
+
+<script>
+    // ===== ESTADO GLOBAL =====
+    let currentUser = null;
+    let currentRole = null;
+    let pendingVoteAction = null;
+    let votedItems = new Set(); // Para controlar el voto único
+
+    // ===== DATOS REALES DE SLP (MOCK DATA) =====
+    const mockData = {
+        caminantes: {
+            title: "Foro Provincial de Caminantes 2027",
+            participantes: [
+                { nombre: "Juan Pérez", cum: "SLP12345", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
+                { nombre: "María López", cum: "SLP12346", grupo: "Grupo 2 Avalon", acreditado: true, votoEmitido: true },
+                { nombre: "Carlos Ruiz", cum: "SLP12347", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: false },
+                { nombre: "Ana Torres", cum: "SLP12348", grupo: "Grupo 5 Avanzada", acreditado: false, votoEmitido: false },
+                { nombre: "Luis Gómez", cum: "SLP12349", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false }
+            ],
+            temas: [
+                { id: 1, titulo: "Actividades al aire libre", descripcion: "Propuesta para conservar balseadas, fogatas y caminatas.", votos: 12 },
+                { id: 2, titulo: "Formación de líderes", descripcion: "Talleres de liderazgo para caminantes.", votos: 8 },
+                { id: 3, titulo: "Proyectos de servicio", descripcion: "Impulsar proyectos comunitarios.", votos: 15 }
+            ],
+            candidatos: [
+                { nombre: "Juan Pérez", grupo: "Grupo 1 Tequihua", puesto: "Coordinador CPRC", inicial: "JP", propuesta: "Calendario anual de actividades provinciales." },
+                { nombre: "María López", grupo: "Grupo 2 Avalon", puesto: "Coordinador CPRC", inicial: "ML", propuesta: "Sistema de mentorías entre caminantes." },
+                { nombre: "Carlos Ruiz", grupo: "Grupo 4 San Jorge", puesto: "Comunicador CPRC", inicial: "CR", propuesta: "Espacio virtual para compartir proyectos." },
+                { nombre: "Ana Torres", grupo: "Grupo 5 Avanzada", puesto: "Comunicador CPRC", inicial: "AT", propuesta: "Boletín mensual de la Red de Caminantes." }
+            ],
+            recomendaciones: [
+                { id: 1, titulo: "Actividades atractivas", proponente: "Juan Pérez", secundada: true, votos: 20, estatus: "En Votación" },
+                { id: 2, titulo: "Apoyo a proyectos", proponente: "María López", secundada: false, votos: 0, estatus: "En Secundado" },
+                { id: 3, titulo: "Comunicación efectiva", proponente: "Carlos Ruiz", secundada: true, votos: 18, estatus: "Aprobada" }
+            ]
+        },
+        rovers: {
+            title: "Foro Provincial de Rovers 2027",
+            participantes: [
+                { nombre: "Pedro Sánchez", cum: "SLP22345", clan: "Clan Fénix", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
+                { nombre: "Laura Díaz", cum: "SLP22346", clan: "Clan Dragón", grupo: "Grupo 2 Avalon", acreditado: true, votoEmitido: true },
+                { nombre: "Miguel Ángel", cum: "SLP22347", clan: "Clan Fénix", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: false },
+                { nombre: "Sofía Ramírez", cum: "SLP22348", clan: "Clan Águila", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false }
+            ],
+            temas: [
+                { id: 1, titulo: "Vinculación profesional", descripcion: "Base de datos de profesiones para orientación vocacional.", votos: 10 },
+                { id: 2, titulo: "Proyectos de impacto social", descripcion: "Impulsar proyectos con ODS.", votos: 14 }
+            ],
+            candidatos: [
+                { nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", puesto: "Coordinador CPRJ", inicial: "PS", propuesta: "Red de contactos profesionales para rovers." },
+                { nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", puesto: "Coordinador CPRJ", inicial: "LD", propuesta: "Talleres de emprendimiento social." },
+                { nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", puesto: "Coordinador CPRJ", inicial: "MA", propuesta: "Vinculación con universidades." },
+                { nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", puesto: "Coordinador CPRJ", inicial: "SR", propuesta: "Bolsa de trabajo scout." }
+            ],
+            recomendaciones: [
+                { id: 1, titulo: "Vinculación profesional", proponente: "Pedro Sánchez", secundada: true, votos: 25, estatus: "En Votación" },
+                { id: 2, titulo: "Formación continua", proponente: "Laura Díaz", secundada: false, votos: 0, estatus: "En Secundado" }
+            ]
+        },
+        scouts: {
+            title: "Foro Provincial de Scouts 2027",
+            participantes: [
+                { nombre: "Diego Flores", cum: "SLP32345", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
+                { nombre: "Valeria Cruz", cum: "SLP32346", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: true },
+                { nombre: "Emilio Vargas", cum: "SLP32347", grupo: "Grupo 5 Avanzada", acreditado: true, votoEmitido: false }
+            ],
+            temas: [
+                { id: 1, titulo: "Actividades de aventura", descripcion: "Conservar balseadas, fogatas y caminatas.", votos: 8 },
+                { id: 2, titulo: "Proyectos ambientales", descripcion: "Impulsar proyectos de conservación.", votos: 12 }
+            ],
+            candidatos: [
+                { nombre: "Diego Flores", grupo: "Grupo 1 Tequihua", puesto: "Representante Masculino", inicial: "DF", propuesta: "Proyecto de reforestación comunitaria.", proyecto: "Paz y Medio Ambiente" },
+                { nombre: "Valeria Cruz", grupo: "Grupo 4 San Jorge", puesto: "Representante Femenino", inicial: "VC", propuesta: "Proyecto de educación ambiental.", proyecto: "Medio Ambiente" },
+                { nombre: "Emilio Vargas", grupo: "Grupo 5 Avanzada", puesto: "Representante Masculino", inicial: "EV", propuesta: "Proyecto de desarrollo comunitario.", proyecto: "Desarrollo Comunitario" }
+            ],
+            recomendaciones: [
+                { id: 1, titulo: "Actividades atractivas", proponente: "Diego Flores", secundada: true, votos: 15, estatus: "En Votación" }
+            ]
+        },
+        provincia: {
+            title: "Panel de Supervisión - Provincia SLP",
+            presidenta: "Ana Lucía Rocha Pinot",
+            foros: [
+                { nombre: "Caminantes", estado: "En Votación", participantes: 20, recomendaciones: 3, electos: 2 },
+                { nombre: "Rovers", estado: "En Discusión", participantes: 20, recomendaciones: 2, electos: 0 },
+                { nombre: "Scouts", estado: "Registro", participantes: 20, recomendaciones: 1, electos: 0 }
+            ]
+        }
+    };
+
+    // ===== FUNCIONES DE LOGIN =====
+    function login() {
+        const cum = document.getElementById('login-cum').value.trim();
+        const fecha = document.getElementById('login-fecha').value;
+        const rol = document.getElementById('login-rol').value;
+
+        if (!cum || !fecha) {
+            showToast('Por favor, ingresa tu CUM y fecha de nacimiento.', 'error');
+            return;
+        }
+
+        // Simulación de validación (en producción, esto se valida contra la base de datos)
+        currentUser = {
+            cum: cum,
+            nombre: rol === 'caminante' ? 'Juan Pérez' : rol === 'rover' ? 'Pedro Sánchez' : rol === 'scout' ? 'Diego Flores' : 'Ana Lucía Rocha Pinot',
+            grupo: rol === 'caminante' ? 'Grupo 1 Tequihua' : rol === 'rover' ? 'Grupo 1 Tequihua' : rol === 'scout' ? 'Grupo 1 Tequihua' : 'Provincia SLP',
+            rol: rol
+        };
+        currentRole = rol;
+
+        // Ocultar login, mostrar app
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('app-screen').classList.remove('hidden');
+
+        // Actualizar header
+        document.getElementById('header-user').textContent = currentUser.nombre;
+        document.getElementById('header-role').textContent = currentUser.grupo + ' - ' + (rol === 'provincia' ? 'Presidenta de Provincia' : rol.charAt(0).toUpperCase() + rol.slice(1));
+        document.getElementById('header-title').textContent = mockData[rol === 'provincia' ? 'provincia' : rol]?.title || 'Foro SLP';
+
+        // Cargar dashboard
+        showSection('dashboard', document.querySelector('.sidebar button'));
+        showToast('Bienvenido, ' + currentUser.nombre, 'success');
+    }
+
+    function logout() {
+        currentUser = null;
+        currentRole = null;
+        votedItems.clear();
+        document.getElementById('app-screen').classList.add('hidden');
+        document.getElementById('login-screen').classList.remove('hidden');
+        showToast('Sesión cerrada', 'info');
+    }
+
+    // ===== NAVEGACIÓN =====
+    function showSection(section, btn) {
+        document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+
+        const content = document.getElementById('content-area');
+        const data = mockData[currentRole === 'provincia' ? 'provincia' : currentRole];
+
+        if (!data) {
+            content.innerHTML = '<p>Sección no disponible.</p>';
+            return;
+        }
+
+        switch(section) {
+            case 'dashboard': renderDashboard(content, data); break;
+            case 'participantes': renderParticipantes(content, data); break;
+            case 'agenda': renderAgenda(content, data); break;
+            case 'candidaturas': renderCandidaturas(content, data); break;
+            case 'recomendaciones': renderRecomendaciones(content, data); break;
+            case 'elecciones': renderElecciones(content, data); break;
+            case 'actas': renderActas(content, data); break;
+            default: content.innerHTML = '<p>Sección en construcción.</p>';
+        }
+    }
+
+    // ===== RENDERIZADO: DASHBOARD =====
+    function renderDashboard(container, data) {
+        let html = `
+            <h2 class="section-title">Bienvenido, ${currentUser.nombre}</h2>
+            <p class="section-subtitle">${data.title || 'Panel de Supervisión'}</p>
+        `;
+
+        if (currentRole === 'provincia') {
+            html += `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📊 Vista Global de Foros</h3>
+                        <span class="badge badge-morado">Presidenta: ${data.presidenta}</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                            ${data.foros.map(f => `
+                                <div style="background: #f9f9f9; padding: 16px; border-radius: 8px; text-align: center;">
+                                    <h4 style="margin-bottom: 8px;">${f.nombre}</h4>
+                                    <span class="badge ${f.estado === 'En Votación' ? 'badge-warning' : f.estado === 'En Discusión' ? 'badge-info' : 'badge-success'}">${f.estado}</span>
+                                    <p style="margin-top: 12px; font-size: 13px;">Participantes: <strong>${f.participantes}</strong></p>
+                                    <p style="font-size: 13px;">Recomendaciones: <strong>${f.recomendaciones}</strong></p>
+                                    <p style="font-size: 13px;">Electos: <strong>${f.electos}</strong></p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📈 Métricas Globales</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Total de participantes acreditados: <strong>60</strong> (20 por rama)</p>
+                        <p>Total de recomendaciones aprobadas: <strong>6</strong></p>
+                        <p>Total de representantes electos: <strong>2</strong></p>
+                    </div>
+                </div>
+            `;
+        } else {
+            const totalParticipantes = data.participantes?.length || 0;
+            const acreditados = data.participantes?.filter(p => p.acreditado).length || 0;
+            const votosEmitidos = data.participantes?.filter(p => p.votoEmitido).length || 0;
+            const porcentaje = totalParticipantes > 0 ? Math.round((acreditados / totalParticipantes) * 100) : 0;
+
+            html += `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📊 Estado del Foro</h3>
+                        <span class="badge badge-success">En Curso</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Participantes acreditados: <strong>${acreditados} / ${totalParticipantes}</strong></p>
+                        <div class="progress-bar"><div class="fill" style="width: ${porcentaje}%"></div></div>
+                        <p style="margin-top: 12px;">Votos emitidos: <strong>${votosEmitidos}</strong></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📅 Próximas Actividades</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>🗳️ Votación de temas: <strong>Hoy 10:00 AM</strong></p>
+                        <p>⭐ Presentación de candidatos: <strong>Hoy 11:30 AM</strong></p>
+                        <p>📄 Discusión de recomendaciones: <strong>Hoy 12:30 PM</strong></p>
+                        <p>🏆 Elecciones: <strong>Hoy 4:00 PM</strong></p>
+                    </div>
+                </div>
+            `;
+        }
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: PARTICIPANTES =====
+    function renderParticipantes(container, data) {
+        if (!data.participantes) {
+            container.innerHTML = '<p>No hay participantes registrados.</p>';
+            return;
+        }
+        let html = `
+            <h2 class="section-title">Participantes</h2>
+            <p class="section-subtitle">Lista de asistentes al foro (${data.participantes.length} registrados)</p>
+            <div class="card">
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                    <thead>
+                        <tr style="background: var(--gris-claro); text-align: left;">
+                            <th style="padding: 10px;">Nombre</th>
+                            <th style="padding: 10px;">CUM</th>
+                            <th style="padding: 10px;">Grupo/Clan</th>
+                            <th style="padding: 10px;">Acreditado</th>
+                            <th style="padding: 10px;">Voto Emitido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.participantes.map(p => `
+                            <tr style="border-bottom: 1px solid var(--gris-medio);">
+                                <td style="padding: 10px;">${p.nombre}</td>
+                                <td style="padding: 10px;">${p.cum}</td>
+                                <td style="padding: 10px;">${p.grupo || p.clan}</td>
+                                <td style="padding: 10px;">
+                                    <span class="badge ${p.acreditado ? 'badge-success' : 'badge-warning'}">${p.acreditado ? 'Sí' : 'Pendiente'}</span>
+                                </td>
+                                <td style="padding: 10px;">
+                                    <span class="badge ${p.votoEmitido ? 'badge-info' : 'badge-danger'}">${p.votoEmitido ? 'Sí' : 'No'}</span>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: AGENDA =====
+    function renderAgenda(container, data) {
+        if (!data.temas) {
+            container.innerHTML = '<p>No hay temas en la agenda.</p>';
+            return;
+        }
+        let html = `
+            <h2 class="section-title">Agenda del Foro</h2>
+            <p class="section-subtitle">Vota por los temas que quieres discutir (máximo 3)</p>
+        `;
+        data.temas.forEach(tema => {
+            const yaVoto = votedItems.has('tema-' + tema.id);
+            html += `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>${tema.titulo}</h3>
+                        <span class="badge badge-info">${tema.votos} votos</span>
+                    </div>
+                    <div class="card-body">
+                        <p>${tema.descripcion}</p>
+                        <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarTema(${tema.id})">
+                            ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este tema'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: CANDIDATURAS =====
+    function renderCandidaturas(container, data) {
+        if (!data.candidatos) {
+            container.innerHTML = '<p>No hay candidatos registrados.</p>';
+            return;
+        }
+        let html = `
+            <h2 class="section-title">Candidatos</h2>
+            <p class="section-subtitle">Conoce a los candidatos y sus propuestas antes de votar</p>
+            <div class="candidates-grid">
+                ${data.candidatos.map(c => `
+                    <div class="candidate-card">
+                        <div class="avatar">${c.inicial}</div>
+                        <h4>${c.nombre}</h4>
+                        <p class="group">${c.grupo}</p>
+                        <p class="position">${c.puesto}</p>
+                        <p class="propuesta">"${c.propuesta}"</p>
+                        ${c.proyecto ? `<p class="badge badge-morado">Proyecto: ${c.proyecto}</p>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: RECOMENDACIONES =====
+    function renderRecomendaciones(container, data) {
+        if (!data.recomendaciones) {
+            container.innerHTML = '<p>No hay recomendaciones.</p>';
+            return;
+        }
+        let html = `
+            <h2 class="section-title">Recomendaciones</h2>
+            <p class="section-subtitle">Propuestas de los jóvenes para mejorar la Red</p>
+        `;
+        data.recomendaciones.forEach(rec => {
+            const yaVoto = votedItems.has('rec-' + rec.id);
+            html += `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>${rec.titulo}</h3>
+                        <span class="badge ${rec.estatus === 'Aprobada' ? 'badge-success' : rec.estatus === 'En Votación' ? 'badge-warning' : 'badge-info'}">${rec.estatus}</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Propone:</strong> ${rec.proponente}</p>
+                        <p><strong>Secundada:</strong> ${rec.secundada ? '✅ Sí' : '❌ No'}</p>
+                        <p><strong>Votos:</strong> ${rec.votos}</p>
+                        ${rec.secundada && rec.estatus === 'En Votación' ? `
+                            <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarRecomendacion(${rec.id})">
+                                ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por esta recomendación'}
+                            </button>
+                        ` : rec.estatus === 'En Secundado' ? `
+                            <button class="btn-outline" onclick="secundarRecomendacion(${rec.id})">✋ Secundar</button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: ELECCIONES =====
+    function renderElecciones(container, data) {
+        if (!data.candidatos) {
+            container.innerHTML = '<p>No hay elecciones activas.</p>';
+            return;
+        }
+        let html = `
+            <h2 class="section-title">Elecciones</h2>
+            <p class="section-subtitle">Emite tu voto. Recuerda: solo puedes votar una vez.</p>
+            <div class="candidates-grid">
+                ${data.candidatos.map(c => {
+                    const yaVoto = votedItems.has('eleccion-' + c.nombre);
+                    return `
+                        <div class="candidate-card">
+                            <div class="avatar">${c.inicial}</div>
+                            <h4>${c.nombre}</h4>
+                            <p class="group">${c.grupo}</p>
+                            <p class="position">${c.puesto}</p>
+                            <p class="propuesta">"${c.propuesta}"</p>
+                            <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarCandidato('${c.nombre}', '${c.puesto}')">
+                                ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este candidato'}
+                            </button>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    // ===== RENDERIZADO: ACTAS =====
+    function renderActas(container, data) {
+        let html = `
+            <h2 class="section-title">Actas y Documentos</h2>
+            <p class="section-subtitle">Descarga las actas de instalación y reportes del foro</p>
+            <div class="card">
+                <div class="card-header">
+                    <h3>📄 Acta de Instalación</h3>
+                    <span class="badge badge-warning">Pendiente</span>
+                </div>
+                <div class="card-body">
+                    <p>El acta se generará al finalizar el foro.</p>
+                    <button class="btn-secondary" disabled>Descargar Acta (PDF)</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>📊 Reporte del Foro</h3>
+                    <span class="badge badge-warning">Pendiente</span>
+                </div>
+                <div class="card-body">
+                    <p>El reporte incluirá lista de participantes, recomendaciones y conclusiones.</p>
+                    <button class="btn-secondary" disabled>Descargar Reporte (PDF)</button>
+                </div>
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    // ===== FUNCIONES DE VOTACIÓN =====
+    function votarTema(id) {
+        if (votedItems.has('tema-' + id)) {
+            showToast('Ya has votado por este tema. Solo se permite un voto.', 'error');
+            return;
+        }
+        pendingVoteAction = { type: 'tema', id: id };
+        document.getElementById('modal-title').textContent = 'Confirmar Voto de Tema';
+        document.getElementById('modal-message').textContent = '¿Estás seguro? Este voto es definitivo y no podrás cambiarlo.';
+        document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function votarRecomendacion(id) {
+        if (votedItems.has('rec-' + id)) {
+            showToast('Ya has votado por esta recomendación. Solo se permite un voto.', 'error');
+            return;
+        }
+        pendingVoteAction = { type: 'recomendacion', id: id };
+        document.getElementById('modal-title').textContent = 'Confirmar Voto de Recomendación';
+        document.getElementById('modal-message').textContent = '¿Estás seguro? Este voto es definitivo y no podrás cambiarlo.';
+        document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function votarCandidato(nombre, puesto) {
+        const key = 'eleccion-' + nombre;
+        if (votedItems.has(key)) {
+            showToast('Ya has votado por este candidato. Solo se permite un voto.', 'error');
+            return;
+        }
+        pendingVoteAction = { type: 'eleccion', nombre: nombre, puesto: puesto };
+        document.getElementById('modal-title').textContent = 'Confirmar Voto de Elección';
+        document.getElementById('modal-message').textContent = `¿Estás seguro de votar por ${nombre} para ${puesto}? Este voto es definitivo.`;
+        document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function secundarRecomendacion(id) {
+        showToast('Has secundado esta recomendación. Pasará a votación.', 'success');
+        // En producción, aquí se actualizaría el estado en la base de datos
+    }
+
+    function confirmVote() {
+        if (!pendingVoteAction) return;
+
+        const { type, id, nombre } = pendingVoteAction;
+        let key = '';
+
+        if (type === 'tema') key = 'tema-' + id;
+        else if (type === 'recomendacion') key = 'rec-' + id;
+        else if (type === 'eleccion') key = 'eleccion-' + nombre;
+
+        votedItems.add(key);
+        closeModal();
+        showToast('✅ Voto registrado exitosamente. CUM: ' + currentUser.cum, 'success');
+
+        // Recargar la sección actual
+        const activeBtn = document.querySelector('.sidebar button.active');
+        if (activeBtn) {
+            const section = activeBtn.getAttribute('onclick').match(/'([^']+)'/)[1];
+            showSection(section, activeBtn);
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('modal-overlay').classList.remove('active');
+        pendingVoteAction = null;
+    }
+
+    // ===== TOAST =====
+    function showToast(message, type = 'info') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = 'toast show ' + type;
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    }
+</script>
+
+</body>
+</html>
