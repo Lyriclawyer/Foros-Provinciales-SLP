@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foros SLP Digital - Provincia San Luis Potosí</title>
+    <title>Foro Provincial de Rovers SLP 2027</title>
     <style>
         /* ===== RESET Y VARIABLES INSTITUCIONALES ===== */
         * {
@@ -14,17 +14,14 @@
         }
 
         :root {
-            /* Colores institucionales extraídos de los manuales oficiales */
-            --morado-scouts: #6A2C8E;      /* Morado del logo Scouts de México */
-            --verde-scouts: #00A650;       /* Verde de la flor de lis */
-            --rojo-scouts: #E30613;        /* Rojo del texto SCOUTS */
-            --azul-slp: #1B3A6B;           /* Azul de la Provincia SLP */
-            --dorado-slp: #F2A900;         /* Dorado del logo SLP */
-            --verde-caminantes: #4CAF50;   /* Verde de la guía de Caminantes */
-            --azul-caminantes: #2196F3;    /* Azul de la guía de Caminantes */
-            --rojo-rovers: #E30613;        /* Rojo de la guía de Rovers */
-            --naranja-rovers: #FF9800;     /* Naranja de la guía de Rovers */
-            --morado-scouts-rama: #9C27B0; /* Morado de la guía de Scouts */
+            /* Colores institucionales de los manuales oficiales */
+            --morado-scouts: #6A2C8E;
+            --verde-scouts: #00A650;
+            --rojo-scouts: #E30613;
+            --azul-slp: #1B3A6B;
+            --dorado-slp: #F2A900;
+            --rojo-rovers: #E30613;
+            --naranja-rovers: #FF9800;
             --gris-claro: #f5f5f5;
             --gris-medio: #e0e0e0;
             --gris-oscuro: #333;
@@ -34,7 +31,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--morado-scouts) 0%, var(--azul-slp) 100%);
+            background: linear-gradient(135deg, var(--rojo-rovers) 0%, var(--naranja-rovers) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -42,7 +39,6 @@
             padding: 20px;
         }
 
-        /* ===== CONTENEDOR PRINCIPAL ===== */
         .app-container {
             width: 100%;
             max-width: 1200px;
@@ -64,7 +60,8 @@
             align-items: center;
             height: 100%;
             padding: 40px;
-            background: linear-gradient(135deg, var(--morado-scouts) 0%, var(--azul-slp) 100%);
+            background: linear-gradient(135deg, var(--rojo-rovers) 0%, var(--naranja-rovers) 100%);
+            overflow-y: auto;
         }
 
         .login-card {
@@ -73,18 +70,13 @@
             border-radius: var(--radio);
             box-shadow: var(--sombra);
             width: 100%;
-            max-width: 420px;
+            max-width: 460px;
             text-align: center;
         }
 
-        .login-card .logo-login {
-            width: 120px;
-            margin-bottom: 16px;
-        }
-
         .login-card h1 {
-            color: var(--azul-slp);
-            font-size: 24px;
+            color: var(--rojo-rovers);
+            font-size: 22px;
             margin-bottom: 4px;
         }
 
@@ -98,13 +90,13 @@
         .login-card .fecha {
             color: #666;
             font-size: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .login-card input, .login-card select {
             width: 100%;
             padding: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             border: 2px solid var(--gris-medio);
             border-radius: 8px;
             font-size: 14px;
@@ -112,14 +104,14 @@
         }
 
         .login-card input:focus, .login-card select:focus {
-            border-color: var(--verde-scouts);
+            border-color: var(--rojo-rovers);
             outline: none;
         }
 
         .btn-primary {
             width: 100%;
             padding: 14px;
-            background: var(--verde-scouts);
+            background: var(--rojo-rovers);
             color: var(--blanco);
             border: none;
             border-radius: 8px;
@@ -130,21 +122,61 @@
         }
 
         .btn-primary:hover {
-            background: #008a42;
+            background: #b00510;
         }
 
         .btn-primary:active {
             transform: scale(0.98);
         }
 
-        .btn-primary:disabled {
-            background: var(--gris-medio);
-            cursor: not-allowed;
+        /* Botones de acceso rápido para gestión */
+        .quick-access {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn-quick {
+            flex: 1;
+            padding: 12px 8px;
+            border: 2px solid var(--gris-medio);
+            background: var(--blanco);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--gris-oscuro);
+        }
+
+        .btn-quick:hover {
+            border-color: var(--rojo-rovers);
+            color: var(--rojo-rovers);
+        }
+
+        .btn-quick.cprj {
+            border-color: var(--naranja-rovers);
+            color: var(--naranja-rovers);
+        }
+
+        .btn-quick.cprj:hover {
+            background: var(--naranja-rovers);
+            color: var(--blanco);
+        }
+
+        .btn-quick.consejo {
+            border-color: var(--morado-scouts);
+            color: var(--morado-scouts);
+        }
+
+        .btn-quick.consejo:hover {
+            background: var(--morado-scouts);
+            color: var(--blanco);
         }
 
         /* ===== HEADER ===== */
         .header {
-            background: linear-gradient(90deg, var(--morado-scouts), var(--azul-slp));
+            background: linear-gradient(90deg, var(--rojo-rovers), var(--naranja-rovers));
             color: var(--blanco);
             padding: 12px 24px;
             display: flex;
@@ -157,10 +189,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-        }
-
-        .header-left .logo-header {
-            height: 40px;
         }
 
         .header-left h2 {
@@ -207,7 +235,6 @@
             overflow: hidden;
         }
 
-        /* ===== SIDEBAR ===== */
         .sidebar {
             width: 220px;
             background: var(--gris-claro);
@@ -239,9 +266,9 @@
 
         .sidebar button.active {
             background: var(--blanco);
-            border-left-color: var(--verde-scouts);
+            border-left-color: var(--rojo-rovers);
             font-weight: 600;
-            color: var(--azul-slp);
+            color: var(--rojo-rovers);
         }
 
         .sidebar button .icon {
@@ -258,7 +285,7 @@
 
         .section-title {
             font-size: 22px;
-            color: var(--azul-slp);
+            color: var(--rojo-rovers);
             margin-bottom: 8px;
         }
 
@@ -316,11 +343,12 @@
         .badge-danger { background: #FFEBEE; color: #C62828; }
         .badge-info { background: #E3F2FD; color: #1565C0; }
         .badge-morado { background: #F3E5F5; color: #6A2C8E; }
+        .badge-naranja { background: #FFF3E0; color: #E65100; }
 
-        /* ===== BOTONES SECUNDARIOS ===== */
+        /* ===== BOTONES ===== */
         .btn-secondary {
             padding: 10px 20px;
-            background: var(--azul-slp);
+            background: var(--rojo-rovers);
             color: var(--blanco);
             border: none;
             border-radius: 8px;
@@ -331,7 +359,7 @@
         }
 
         .btn-secondary:hover {
-            background: #142c52;
+            background: #b00510;
         }
 
         .btn-secondary:disabled {
@@ -342,8 +370,8 @@
         .btn-outline {
             padding: 10px 20px;
             background: transparent;
-            color: var(--azul-slp);
-            border: 2px solid var(--azul-slp);
+            color: var(--rojo-rovers);
+            border: 2px solid var(--rojo-rovers);
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
@@ -352,13 +380,13 @@
         }
 
         .btn-outline:hover {
-            background: var(--azul-slp);
+            background: var(--rojo-rovers);
             color: var(--blanco);
         }
 
         .btn-voto {
             padding: 12px 24px;
-            background: var(--verde-scouts);
+            background: var(--rojo-rovers);
             color: var(--blanco);
             border: none;
             border-radius: 8px;
@@ -370,7 +398,7 @@
         }
 
         .btn-voto:hover {
-            background: #008a42;
+            background: #b00510;
         }
 
         .btn-voto:disabled {
@@ -404,7 +432,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--morado-scouts), var(--azul-slp));
+            background: linear-gradient(135deg, var(--rojo-rovers), var(--naranja-rovers));
             color: var(--blanco);
             display: flex;
             align-items: center;
@@ -428,7 +456,7 @@
 
         .candidate-card .position {
             font-size: 12px;
-            color: var(--azul-slp);
+            color: var(--rojo-rovers);
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -479,7 +507,7 @@
 
         .modal h3 {
             font-size: 20px;
-            color: var(--azul-slp);
+            color: var(--rojo-rovers);
             margin-bottom: 12px;
         }
 
@@ -495,7 +523,7 @@
             justify-content: center;
         }
 
-        /* ===== NOTIFICACIÓN TOAST ===== */
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -535,7 +563,7 @@
 
         .progress-bar .fill {
             height: 100%;
-            background: var(--verde-scouts);
+            background: var(--rojo-rovers);
             border-radius: 5px;
             transition: width 0.5s ease;
         }
@@ -571,6 +599,10 @@
             .candidates-grid {
                 grid-template-columns: 1fr;
             }
+
+            .quick-access {
+                flex-direction: column;
+            }
         }
 
         .hidden {
@@ -585,22 +617,27 @@
     <!-- ===== PANTALLA DE LOGIN ===== -->
     <div id="login-screen">
         <div class="login-card">
-            <!-- Logo simbólico (reemplazar con el logo real de SLP) -->
             <div style="font-size: 48px; margin-bottom: 8px;">⚜️</div>
-            <h1>Foros SLP Digital</h1>
+            <h1>Foro Provincial de Rovers</h1>
             <p class="subtitle">Provincia San Luis Potosí</p>
             <p class="fecha">13 y 14 de febrero de 2027</p>
-            <input type="text" id="login-cum" placeholder="CUM (Clave Única de Miembro)" value="SLP12345">
-            <input type="date" id="login-fecha" value="2005-06-15">
+
+            <!-- Login para Rovers -->
+            <input type="text" id="login-cum" placeholder="CUM (Clave Única de Miembro)" value="SLP22345">
+            <input type="date" id="login-fecha" value="2003-06-15">
             <select id="login-rol">
-                <option value="caminante">Caminante</option>
                 <option value="rover">Rover</option>
-                <option value="scout">Scout</option>
-                <option value="provincia">Dirigente / Provincia</option>
             </select>
-            <button class="btn-primary" onclick="login()">Ingresar al Foro</button>
+            <button class="btn-primary" onclick="login('rover')">Ingresar como Rover</button>
+
+            <!-- Accesos de Gestión -->
+            <div class="quick-access">
+                <button class="btn-quick cprj" onclick="login('cprj')">🛠️ Comité de Red<br><small>CPRJ</small></button>
+                <button class="btn-quick consejo" onclick="login('consejo')">🏛️ Consejo de<br><small>Provincia</small></button>
+            </div>
+
             <p style="margin-top: 16px; font-size: 11px; color: #999;">
-                Demo: Cualquier CUM funciona. Selecciona tu rol.
+                Demo: Cualquier CUM funciona. Selecciona tu acceso.
             </p>
         </div>
     </div>
@@ -612,12 +649,12 @@
         <div class="header">
             <div class="header-left">
                 <span style="font-size: 28px;">⚜️</span>
-                <h2 id="header-title">Foro Provincial de Caminantes 2027</h2>
+                <h2 id="header-title">Foro Provincial de Rovers 2027</h2>
             </div>
             <div class="header-right">
                 <div class="user-info">
-                    <span id="header-user">Juan Pérez</span>
-                    <small id="header-role">Caminante - Grupo 1 Tequihua</small>
+                    <span id="header-user">Pedro Sánchez</span>
+                    <small id="header-role">Rover - Grupo 1 Tequihua</small>
                 </div>
                 <button onclick="logout()">Cerrar Sesión</button>
             </div>
@@ -659,9 +696,7 @@
             </div>
 
             <!-- ÁREA DE CONTENIDO -->
-            <div class="content-area" id="content-area">
-                <!-- El contenido se carga dinámicamente con JS -->
-            </div>
+            <div class="content-area" id="content-area"></div>
 
         </div>
     </div>
@@ -680,7 +715,7 @@
     </div>
 </div>
 
-<!-- ===== TOAST DE NOTIFICACIÓN ===== -->
+<!-- ===== TOAST ===== -->
 <div class="toast" id="toast"></div>
 
 <script>
@@ -688,120 +723,103 @@
     let currentUser = null;
     let currentRole = null;
     let pendingVoteAction = null;
-    let votedItems = new Set(); // Para controlar el voto único
+    let votedItems = new Set();
 
     // ===== DATOS REALES DE SLP (MOCK DATA) =====
     const mockData = {
-        caminantes: {
-            title: "Foro Provincial de Caminantes 2027",
-            participantes: [
-                { nombre: "Juan Pérez", cum: "SLP12345", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
-                { nombre: "María López", cum: "SLP12346", grupo: "Grupo 2 Avalon", acreditado: true, votoEmitido: true },
-                { nombre: "Carlos Ruiz", cum: "SLP12347", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: false },
-                { nombre: "Ana Torres", cum: "SLP12348", grupo: "Grupo 5 Avanzada", acreditado: false, votoEmitido: false },
-                { nombre: "Luis Gómez", cum: "SLP12349", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false }
-            ],
-            temas: [
-                { id: 1, titulo: "Actividades al aire libre", descripcion: "Propuesta para conservar balseadas, fogatas y caminatas.", votos: 12 },
-                { id: 2, titulo: "Formación de líderes", descripcion: "Talleres de liderazgo para caminantes.", votos: 8 },
-                { id: 3, titulo: "Proyectos de servicio", descripcion: "Impulsar proyectos comunitarios.", votos: 15 }
-            ],
-            candidatos: [
-                { nombre: "Juan Pérez", grupo: "Grupo 1 Tequihua", puesto: "Coordinador CPRC", inicial: "JP", propuesta: "Calendario anual de actividades provinciales." },
-                { nombre: "María López", grupo: "Grupo 2 Avalon", puesto: "Coordinador CPRC", inicial: "ML", propuesta: "Sistema de mentorías entre caminantes." },
-                { nombre: "Carlos Ruiz", grupo: "Grupo 4 San Jorge", puesto: "Comunicador CPRC", inicial: "CR", propuesta: "Espacio virtual para compartir proyectos." },
-                { nombre: "Ana Torres", grupo: "Grupo 5 Avanzada", puesto: "Comunicador CPRC", inicial: "AT", propuesta: "Boletín mensual de la Red de Caminantes." }
-            ],
-            recomendaciones: [
-                { id: 1, titulo: "Actividades atractivas", proponente: "Juan Pérez", secundada: true, votos: 20, estatus: "En Votación" },
-                { id: 2, titulo: "Apoyo a proyectos", proponente: "María López", secundada: false, votos: 0, estatus: "En Secundado" },
-                { id: 3, titulo: "Comunicación efectiva", proponente: "Carlos Ruiz", secundada: true, votos: 18, estatus: "Aprobada" }
-            ]
-        },
         rovers: {
             title: "Foro Provincial de Rovers 2027",
             participantes: [
                 { nombre: "Pedro Sánchez", cum: "SLP22345", clan: "Clan Fénix", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
                 { nombre: "Laura Díaz", cum: "SLP22346", clan: "Clan Dragón", grupo: "Grupo 2 Avalon", acreditado: true, votoEmitido: true },
                 { nombre: "Miguel Ángel", cum: "SLP22347", clan: "Clan Fénix", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: false },
-                { nombre: "Sofía Ramírez", cum: "SLP22348", clan: "Clan Águila", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false }
+                { nombre: "Sofía Ramírez", cum: "SLP22348", clan: "Clan Águila", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false },
+                { nombre: "Diego Flores", cum: "SLP22349", clan: "Clan Dragón", grupo: "Grupo 5 Avanzada", acreditado: true, votoEmitido: false },
+                { nombre: "Valeria Cruz", cum: "SLP22350", clan: "Clan Águila", grupo: "Grupo 1 Tequihua", acreditado: false, votoEmitido: false }
             ],
             temas: [
                 { id: 1, titulo: "Vinculación profesional", descripcion: "Base de datos de profesiones para orientación vocacional.", votos: 10 },
-                { id: 2, titulo: "Proyectos de impacto social", descripcion: "Impulsar proyectos con ODS.", votos: 14 }
+                { id: 2, titulo: "Proyectos de impacto social", descripcion: "Impulsar proyectos con ODS.", votos: 14 },
+                { id: 3, titulo: "Formación continua", descripcion: "Talleres de emprendimiento y liderazgo.", votos: 8 }
             ],
             candidatos: [
-                { nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", puesto: "Coordinador CPRJ", inicial: "PS", propuesta: "Red de contactos profesionales para rovers." },
-                { nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", puesto: "Coordinador CPRJ", inicial: "LD", propuesta: "Talleres de emprendimiento social." },
-                { nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", puesto: "Coordinador CPRJ", inicial: "MA", propuesta: "Vinculación con universidades." },
-                { nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", puesto: "Coordinador CPRJ", inicial: "SR", propuesta: "Bolsa de trabajo scout." }
+                { nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", clan: "Clan Fénix", puesto: "Coordinador CPRJ", inicial: "PS", propuesta: "Red de contactos profesionales para rovers." },
+                { nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", clan: "Clan Dragón", puesto: "Coordinador CPRJ", inicial: "LD", propuesta: "Talleres de emprendimiento social." },
+                { nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", clan: "Clan Fénix", puesto: "Coordinador CPRJ", inicial: "MA", propuesta: "Vinculación con universidades." },
+                { nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", clan: "Clan Águila", puesto: "Coordinador CPRJ", inicial: "SR", propuesta: "Bolsa de trabajo scout." }
             ],
             recomendaciones: [
                 { id: 1, titulo: "Vinculación profesional", proponente: "Pedro Sánchez", secundada: true, votos: 25, estatus: "En Votación" },
-                { id: 2, titulo: "Formación continua", proponente: "Laura Díaz", secundada: false, votos: 0, estatus: "En Secundado" }
+                { id: 2, titulo: "Formación continua", proponente: "Laura Díaz", secundada: false, votos: 0, estatus: "En Secundado" },
+                { id: 3, titulo: "Proyectos de impacto social", proponente: "Sofía Ramírez", secundada: true, votos: 18, estatus: "Aprobada" }
             ]
         },
-        scouts: {
-            title: "Foro Provincial de Scouts 2027",
-            participantes: [
-                { nombre: "Diego Flores", cum: "SLP32345", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
-                { nombre: "Valeria Cruz", cum: "SLP32346", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: true },
-                { nombre: "Emilio Vargas", cum: "SLP32347", grupo: "Grupo 5 Avanzada", acreditado: true, votoEmitido: false }
-            ],
-            temas: [
-                { id: 1, titulo: "Actividades de aventura", descripcion: "Conservar balseadas, fogatas y caminatas.", votos: 8 },
-                { id: 2, titulo: "Proyectos ambientales", descripcion: "Impulsar proyectos de conservación.", votos: 12 }
-            ],
-            candidatos: [
-                { nombre: "Diego Flores", grupo: "Grupo 1 Tequihua", puesto: "Representante Masculino", inicial: "DF", propuesta: "Proyecto de reforestación comunitaria.", proyecto: "Paz y Medio Ambiente" },
-                { nombre: "Valeria Cruz", grupo: "Grupo 4 San Jorge", puesto: "Representante Femenino", inicial: "VC", propuesta: "Proyecto de educación ambiental.", proyecto: "Medio Ambiente" },
-                { nombre: "Emilio Vargas", grupo: "Grupo 5 Avanzada", puesto: "Representante Masculino", inicial: "EV", propuesta: "Proyecto de desarrollo comunitario.", proyecto: "Desarrollo Comunitario" }
-            ],
-            recomendaciones: [
-                { id: 1, titulo: "Actividades atractivas", proponente: "Diego Flores", secundada: true, votos: 15, estatus: "En Votación" }
-            ]
+        cprj: {
+            title: "Panel de Control - Comité de Red de Jóvenes (CPRJ)",
+            foro: "Foro Provincial de Rovers",
+            participantes: 20,
+            recomendaciones: 3,
+            electos: 0
         },
-        provincia: {
-            title: "Panel de Supervisión - Provincia SLP",
+        consejo: {
+            title: "Panel de Supervisión - Consejo de Provincia SLP",
             presidenta: "Ana Lucía Rocha Pinot",
-            foros: [
-                { nombre: "Caminantes", estado: "En Votación", participantes: 20, recomendaciones: 3, electos: 2 },
-                { nombre: "Rovers", estado: "En Discusión", participantes: 20, recomendaciones: 2, electos: 0 },
-                { nombre: "Scouts", estado: "Registro", participantes: 20, recomendaciones: 1, electos: 0 }
-            ]
+            foro: "Foro Provincial de Rovers",
+            participantes: 20,
+            recomendaciones: 3,
+            electos: 0
         }
     };
 
     // ===== FUNCIONES DE LOGIN =====
-    function login() {
-        const cum = document.getElementById('login-cum').value.trim();
-        const fecha = document.getElementById('login-fecha').value;
-        const rol = document.getElementById('login-rol').value;
+    function login(tipo) {
+        if (tipo === 'rover') {
+            const cum = document.getElementById('login-cum').value.trim();
+            const fecha = document.getElementById('login-fecha').value;
 
-        if (!cum || !fecha) {
-            showToast('Por favor, ingresa tu CUM y fecha de nacimiento.', 'error');
-            return;
+            if (!cum || !fecha) {
+                showToast('Por favor, ingresa tu CUM y fecha de nacimiento.', 'error');
+                return;
+            }
+
+            currentUser = {
+                cum: cum,
+                nombre: 'Pedro Sánchez',
+                grupo: 'Grupo 1 Tequihua',
+                rol: 'rover'
+            };
+            currentRole = 'rover';
+
+        } else if (tipo === 'cprj') {
+            currentUser = {
+                cum: 'CPRJ-001',
+                nombre: 'Comité de Red de Jóvenes',
+                grupo: 'CPRJ SLP',
+                rol: 'cprj'
+            };
+            currentRole = 'cprj';
+
+        } else if (tipo === 'consejo') {
+            currentUser = {
+                cum: 'CONSEJO-001',
+                nombre: 'Ana Lucía Rocha Pinot',
+                grupo: 'Consejo de Provincia SLP',
+                rol: 'consejo'
+            };
+            currentRole = 'consejo';
         }
 
-        // Simulación de validación (en producción, esto se valida contra la base de datos)
-        currentUser = {
-            cum: cum,
-            nombre: rol === 'caminante' ? 'Juan Pérez' : rol === 'rover' ? 'Pedro Sánchez' : rol === 'scout' ? 'Diego Flores' : 'Ana Lucía Rocha Pinot',
-            grupo: rol === 'caminante' ? 'Grupo 1 Tequihua' : rol === 'rover' ? 'Grupo 1 Tequihua' : rol === 'scout' ? 'Grupo 1 Tequihua' : 'Provincia SLP',
-            rol: rol
-        };
-        currentRole = rol;
-
-        // Ocultar login, mostrar app
         document.getElementById('login-screen').classList.add('hidden');
         document.getElementById('app-screen').classList.remove('hidden');
 
         // Actualizar header
         document.getElementById('header-user').textContent = currentUser.nombre;
-        document.getElementById('header-role').textContent = currentUser.grupo + ' - ' + (rol === 'provincia' ? 'Presidenta de Provincia' : rol.charAt(0).toUpperCase() + rol.slice(1));
-        document.getElementById('header-title').textContent = mockData[rol === 'provincia' ? 'provincia' : rol]?.title || 'Foro SLP';
+        document.getElementById('header-role').textContent = currentUser.grupo + ' - ' + 
+            (currentRole === 'rover' ? 'Rover' : currentRole === 'cprj' ? 'CPRJ' : 'Consejo de Provincia');
+        
+        const data = mockData[currentRole];
+        document.getElementById('header-title').textContent = data.title;
 
-        // Cargar dashboard
         showSection('dashboard', document.querySelector('.sidebar button'));
         showToast('Bienvenido, ' + currentUser.nombre, 'success');
     }
@@ -821,12 +839,7 @@
         if (btn) btn.classList.add('active');
 
         const content = document.getElementById('content-area');
-        const data = mockData[currentRole === 'provincia' ? 'provincia' : currentRole];
-
-        if (!data) {
-            content.innerHTML = '<p>Sección no disponible.</p>';
-            return;
-        }
+        const data = mockData[currentRole];
 
         switch(section) {
             case 'dashboard': renderDashboard(content, data); break;
@@ -842,50 +855,18 @@
 
     // ===== RENDERIZADO: DASHBOARD =====
     function renderDashboard(container, data) {
-        let html = `
-            <h2 class="section-title">Bienvenido, ${currentUser.nombre}</h2>
-            <p class="section-subtitle">${data.title || 'Panel de Supervisión'}</p>
-        `;
+        let html = '';
 
-        if (currentRole === 'provincia') {
-            html += `
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📊 Vista Global de Foros</h3>
-                        <span class="badge badge-morado">Presidenta: ${data.presidenta}</span>
-                    </div>
-                    <div class="card-body">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                            ${data.foros.map(f => `
-                                <div style="background: #f9f9f9; padding: 16px; border-radius: 8px; text-align: center;">
-                                    <h4 style="margin-bottom: 8px;">${f.nombre}</h4>
-                                    <span class="badge ${f.estado === 'En Votación' ? 'badge-warning' : f.estado === 'En Discusión' ? 'badge-info' : 'badge-success'}">${f.estado}</span>
-                                    <p style="margin-top: 12px; font-size: 13px;">Participantes: <strong>${f.participantes}</strong></p>
-                                    <p style="font-size: 13px;">Recomendaciones: <strong>${f.recomendaciones}</strong></p>
-                                    <p style="font-size: 13px;">Electos: <strong>${f.electos}</strong></p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📈 Métricas Globales</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Total de participantes acreditados: <strong>60</strong> (20 por rama)</p>
-                        <p>Total de recomendaciones aprobadas: <strong>6</strong></p>
-                        <p>Total de representantes electos: <strong>2</strong></p>
-                    </div>
-                </div>
-            `;
-        } else {
-            const totalParticipantes = data.participantes?.length || 0;
-            const acreditados = data.participantes?.filter(p => p.acreditado).length || 0;
-            const votosEmitidos = data.participantes?.filter(p => p.votoEmitido).length || 0;
-            const porcentaje = totalParticipantes > 0 ? Math.round((acreditados / totalParticipantes) * 100) : 0;
+        if (currentRole === 'rover') {
+            const d = mockData.rovers;
+            const totalParticipantes = d.participantes.length;
+            const acreditados = d.participantes.filter(p => p.acreditado).length;
+            const votosEmitidos = d.participantes.filter(p => p.votoEmitido).length;
+            const porcentaje = Math.round((acreditados / totalParticipantes) * 100);
 
-            html += `
+            html = `
+                <h2 class="section-title">Bienvenido, ${currentUser.nombre}</h2>
+                <p class="section-subtitle">${d.title} - 13 y 14 de febrero de 2027</p>
                 <div class="card">
                     <div class="card-header">
                         <h3>📊 Estado del Foro</h3>
@@ -909,36 +890,119 @@
                     </div>
                 </div>
             `;
+        } else if (currentRole === 'cprj') {
+            html = `
+                <h2 class="section-title">🛠️ Panel de Control - CPRJ</h2>
+                <p class="section-subtitle">Gestión completa del Foro Provincial de Rovers SLP 2027</p>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📊 Resumen del Foro</h3>
+                        <span class="badge badge-naranja">CPRJ</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Participantes registrados: <strong>20</strong></p>
+                        <p>Recomendaciones activas: <strong>3</strong></p>
+                        <p>Coordinadores electos: <strong>Pendiente</strong></p>
+                        <p>Estado del foro: <span class="badge badge-success">En Curso</span></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🛠️ Acciones de Control</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Acreditar Participante</button>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Aprobar Candidatura</button>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Cerrar Votación</button>
+                        <button class="btn-outline" style="margin-bottom: 8px;">Generar Acta</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📋 Estado de Votaciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Votación de temas: <span class="badge badge-success">Activa</span></p>
+                        <p>Elección de coordinadores: <span class="badge badge-warning">Pendiente</span></p>
+                        <p>Votación de recomendaciones: <span class="badge badge-info">En Proceso</span></p>
+                    </div>
+                </div>
+            `;
+        } else if (currentRole === 'consejo') {
+            html = `
+                <h2 class="section-title">🏛️ Panel de Supervisión - Consejo de Provincia</h2>
+                <p class="section-subtitle">Presidenta: ${data.presidenta}</p>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📊 Supervisión del Foro de Rovers</h3>
+                        <span class="badge badge-morado">Consejo</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Participantes registrados: <strong>20</strong></p>
+                        <p>Recomendaciones activas: <strong>3</strong></p>
+                        <p>Coordinadores electos: <strong>Pendiente</strong></p>
+                        <p>Estado del foro: <span class="badge badge-success">En Curso</span></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>⚙️ Acciones de Modificación Total</h3>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 13px; color: #666; margin-bottom: 12px;">El Consejo de Provincia tiene permisos absolutos para modificar cualquier aspecto del foro.</p>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Editar Participantes</button>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Editar Agenda</button>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Editar Recomendaciones</button>
+                        <button class="btn-secondary" style="margin-right: 8px; margin-bottom: 8px;">Anular Votación</button>
+                        <button class="btn-outline" style="margin-bottom: 8px;">Descargar Todo (PDF)</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📈 Métricas Globales</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Total de participantes: <strong>20</strong></p>
+                        <p>Total de recomendaciones: <strong>3</strong></p>
+                        <p>Total de votos emitidos: <strong>8</strong></p>
+                        <p>Porcentaje de participación: <strong>40%</strong></p>
+                    </div>
+                </div>
+            `;
         }
+
         container.innerHTML = html;
     }
 
     // ===== RENDERIZADO: PARTICIPANTES =====
     function renderParticipantes(container, data) {
-        if (!data.participantes) {
+        const d = mockData.rovers;
+        if (!d.participantes) {
             container.innerHTML = '<p>No hay participantes registrados.</p>';
             return;
         }
         let html = `
             <h2 class="section-title">Participantes</h2>
-            <p class="section-subtitle">Lista de asistentes al foro (${data.participantes.length} registrados)</p>
+            <p class="section-subtitle">Lista de rovers asistentes al foro (${d.participantes.length} registrados)</p>
             <div class="card">
                 <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                     <thead>
                         <tr style="background: var(--gris-claro); text-align: left;">
                             <th style="padding: 10px;">Nombre</th>
                             <th style="padding: 10px;">CUM</th>
-                            <th style="padding: 10px;">Grupo/Clan</th>
+                            <th style="padding: 10px;">Clan</th>
+                            <th style="padding: 10px;">Grupo</th>
                             <th style="padding: 10px;">Acreditado</th>
                             <th style="padding: 10px;">Voto Emitido</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${data.participantes.map(p => `
+                        ${d.participantes.map(p => `
                             <tr style="border-bottom: 1px solid var(--gris-medio);">
                                 <td style="padding: 10px;">${p.nombre}</td>
                                 <td style="padding: 10px;">${p.cum}</td>
-                                <td style="padding: 10px;">${p.grupo || p.clan}</td>
+                                <td style="padding: 10px;">${p.clan}</td>
+                                <td style="padding: 10px;">${p.grupo}</td>
                                 <td style="padding: 10px;">
                                     <span class="badge ${p.acreditado ? 'badge-success' : 'badge-warning'}">${p.acreditado ? 'Sí' : 'Pendiente'}</span>
                                 </td>
@@ -956,7 +1020,8 @@
 
     // ===== RENDERIZADO: AGENDA =====
     function renderAgenda(container, data) {
-        if (!data.temas) {
+        const d = mockData.rovers;
+        if (!d.temas) {
             container.innerHTML = '<p>No hay temas en la agenda.</p>';
             return;
         }
@@ -964,7 +1029,7 @@
             <h2 class="section-title">Agenda del Foro</h2>
             <p class="section-subtitle">Vota por los temas que quieres discutir (máximo 3)</p>
         `;
-        data.temas.forEach(tema => {
+        d.temas.forEach(tema => {
             const yaVoto = votedItems.has('tema-' + tema.id);
             html += `
                 <div class="card">
@@ -974,9 +1039,13 @@
                     </div>
                     <div class="card-body">
                         <p>${tema.descripcion}</p>
-                        <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarTema(${tema.id})">
-                            ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este tema'}
-                        </button>
+                        ${currentRole === 'rover' ? `
+                            <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarTema(${tema.id})">
+                                ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este tema'}
+                            </button>
+                        ` : `
+                            <button class="btn-secondary" onclick="showToast('Acción de gestión: editar tema', 'info')">✏️ Editar Tema</button>
+                        `}
                     </div>
                 </div>
             `;
@@ -986,22 +1055,25 @@
 
     // ===== RENDERIZADO: CANDIDATURAS =====
     function renderCandidaturas(container, data) {
-        if (!data.candidatos) {
+        const d = mockData.rovers;
+        if (!d.candidatos) {
             container.innerHTML = '<p>No hay candidatos registrados.</p>';
             return;
         }
         let html = `
-            <h2 class="section-title">Candidatos</h2>
+            <h2 class="section-title">Candidatos a Coordinadores del CPRJ</h2>
             <p class="section-subtitle">Conoce a los candidatos y sus propuestas antes de votar</p>
             <div class="candidates-grid">
-                ${data.candidatos.map(c => `
+                ${d.candidatos.map(c => `
                     <div class="candidate-card">
                         <div class="avatar">${c.inicial}</div>
                         <h4>${c.nombre}</h4>
-                        <p class="group">${c.grupo}</p>
+                        <p class="group">${c.grupo} - ${c.clan}</p>
                         <p class="position">${c.puesto}</p>
                         <p class="propuesta">"${c.propuesta}"</p>
-                        ${c.proyecto ? `<p class="badge badge-morado">Proyecto: ${c.proyecto}</p>` : ''}
+                        ${currentRole !== 'rover' ? `
+                            <button class="btn-secondary" style="width: 100%;" onclick="showToast('Acción de gestión: revisar candidatura', 'info')">Revisar Candidatura</button>
+                        ` : ''}
                     </div>
                 `).join('')}
             </div>
@@ -1011,15 +1083,16 @@
 
     // ===== RENDERIZADO: RECOMENDACIONES =====
     function renderRecomendaciones(container, data) {
-        if (!data.recomendaciones) {
+        const d = mockData.rovers;
+        if (!d.recomendaciones) {
             container.innerHTML = '<p>No hay recomendaciones.</p>';
             return;
         }
         let html = `
             <h2 class="section-title">Recomendaciones</h2>
-            <p class="section-subtitle">Propuestas de los jóvenes para mejorar la Red</p>
+            <p class="section-subtitle">Propuestas de los rovers para mejorar la Red de Jóvenes</p>
         `;
-        data.recomendaciones.forEach(rec => {
+        d.recomendaciones.forEach(rec => {
             const yaVoto = votedItems.has('rec-' + rec.id);
             html += `
                 <div class="card">
@@ -1031,12 +1104,14 @@
                         <p><strong>Propone:</strong> ${rec.proponente}</p>
                         <p><strong>Secundada:</strong> ${rec.secundada ? '✅ Sí' : '❌ No'}</p>
                         <p><strong>Votos:</strong> ${rec.votos}</p>
-                        ${rec.secundada && rec.estatus === 'En Votación' ? `
+                        ${currentRole === 'rover' && rec.secundada && rec.estatus === 'En Votación' ? `
                             <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarRecomendacion(${rec.id})">
                                 ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por esta recomendación'}
                             </button>
-                        ` : rec.estatus === 'En Secundado' ? `
+                        ` : rec.estatus === 'En Secundado' && currentRole === 'rover' ? `
                             <button class="btn-outline" onclick="secundarRecomendacion(${rec.id})">✋ Secundar</button>
+                        ` : currentRole !== 'rover' ? `
+                            <button class="btn-secondary" style="width: 100%;" onclick="showToast('Acción de gestión: editar recomendación', 'info')">✏️ Editar Recomendación</button>
                         ` : ''}
                     </div>
                 </div>
@@ -1047,26 +1122,31 @@
 
     // ===== RENDERIZADO: ELECCIONES =====
     function renderElecciones(container, data) {
-        if (!data.candidatos) {
+        const d = mockData.rovers;
+        if (!d.candidatos) {
             container.innerHTML = '<p>No hay elecciones activas.</p>';
             return;
         }
         let html = `
-            <h2 class="section-title">Elecciones</h2>
+            <h2 class="section-title">Elecciones de Coordinadores del CPRJ</h2>
             <p class="section-subtitle">Emite tu voto. Recuerda: solo puedes votar una vez.</p>
             <div class="candidates-grid">
-                ${data.candidatos.map(c => {
+                ${d.candidatos.map(c => {
                     const yaVoto = votedItems.has('eleccion-' + c.nombre);
                     return `
                         <div class="candidate-card">
                             <div class="avatar">${c.inicial}</div>
                             <h4>${c.nombre}</h4>
-                            <p class="group">${c.grupo}</p>
+                            <p class="group">${c.grupo} - ${c.clan}</p>
                             <p class="position">${c.puesto}</p>
                             <p class="propuesta">"${c.propuesta}"</p>
-                            <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarCandidato('${c.nombre}', '${c.puesto}')">
-                                ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este candidato'}
-                            </button>
+                            ${currentRole === 'rover' ? `
+                                <button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarCandidato('${c.nombre}', '${c.puesto}')">
+                                    ${yaVoto ? '✅ Voto Emitido' : '🗳️ Votar por este candidato'}
+                                </button>
+                            ` : `
+                                <button class="btn-secondary" style="width: 100%;" onclick="showToast('Acción de gestión: revisar candidato', 'info')">Revisar Candidato</button>
+                            `}
                         </div>
                     `;
                 }).join('')}
@@ -1082,11 +1162,11 @@
             <p class="section-subtitle">Descarga las actas de instalación y reportes del foro</p>
             <div class="card">
                 <div class="card-header">
-                    <h3>📄 Acta de Instalación</h3>
+                    <h3>📄 Acta de Instalación del CPRJ</h3>
                     <span class="badge badge-warning">Pendiente</span>
                 </div>
                 <div class="card-body">
-                    <p>El acta se generará al finalizar el foro.</p>
+                    <p>El acta se generará al finalizar el foro, con los 2 coordinadores electos.</p>
                     <button class="btn-secondary" disabled>Descargar Acta (PDF)</button>
                 </div>
             </div>
@@ -1100,6 +1180,17 @@
                     <button class="btn-secondary" disabled>Descargar Reporte (PDF)</button>
                 </div>
             </div>
+            ${currentRole !== 'rover' ? `
+                <div class="card">
+                    <div class="card-header">
+                        <h3>⚙️ Gestión de Actas</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn-secondary" style="margin-right: 8px;">Generar Acta Ahora</button>
+                        <button class="btn-outline">Enviar a Dirección Nacional</button>
+                    </div>
+                </div>
+            ` : ''}
         `;
         container.innerHTML = html;
     }
@@ -1141,7 +1232,6 @@
 
     function secundarRecomendacion(id) {
         showToast('Has secundado esta recomendación. Pasará a votación.', 'success');
-        // En producción, aquí se actualizaría el estado en la base de datos
     }
 
     function confirmVote() {
@@ -1158,7 +1248,6 @@
         closeModal();
         showToast('✅ Voto registrado exitosamente. CUM: ' + currentUser.cum, 'success');
 
-        // Recargar la sección actual
         const activeBtn = document.querySelector('.sidebar button.active');
         if (activeBtn) {
             const section = activeBtn.getAttribute('onclick').match(/'([^']+)'/)[1];
