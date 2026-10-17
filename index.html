@@ -6,350 +6,109 @@
     <title>Foro Provincial de Rovers SLP 2027</title>
     <style>
         /* ===== RESET Y VARIABLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         :root {
-            --morado-scouts: #6A2C8E;
-            --verde-scouts: #00A650;
-            --rojo-scouts: #E30613;
-            --azul-slp: #1B3A6B;
-            --dorado-slp: #F2A900;
-            --rojo-rovers: #E30613;
-            --naranja-rovers: #FF9800;
-            --gris-claro: #f5f5f5;
-            --gris-medio: #e0e0e0;
-            --gris-oscuro: #333;
-            --blanco: #ffffff;
-            --sombra: 0 4px 12px rgba(0,0,0,0.1);
-            --radio: 12px;
+            --morado-scouts: #6A2C8E; --verde-scouts: #00A650; --rojo-scouts: #E30613;
+            --azul-slp: #1B3A6B; --dorado-slp: #F2A900; --rojo-rovers: #E30613;
+            --naranja-rovers: #FF9800; --gris-claro: #f5f5f5; --gris-medio: #e0e0e0;
+            --gris-oscuro: #333; --blanco: #ffffff; --sombra: 0 4px 12px rgba(0,0,0,0.1); --radio: 12px;
         }
-
         body {
             background: linear-gradient(135deg, var(--rojo-rovers) 0%, var(--naranja-rovers) 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px; /* Menos padding en móvil */
+            min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 10px;
         }
-
         .app-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 95vh;
-            background: var(--blanco);
-            border-radius: var(--radio);
-            box-shadow: var(--sombra);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            width: 100%; max-width: 1200px; height: 95vh; background: var(--blanco);
+            border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden;
+            display: flex; flex-direction: column; position: relative;
         }
 
         /* ===== LOGIN ===== */
         #login-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--rojo-rovers) 0%, var(--naranja-rovers) 100%);
-            overflow-y: auto;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 100%; padding: 20px; background: linear-gradient(135deg, var(--rojo-rovers) 0%, var(--naranja-rovers) 100%); overflow-y: auto;
         }
-
-        .login-card {
-            background: var(--blanco);
-            padding: 30px;
-            border-radius: var(--radio);
-            box-shadow: var(--sombra);
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-        }
-
-        .login-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .login-logos img {
-            height: 60px;
-            object-fit: contain;
-        }
-
+        .login-card { background: var(--blanco); padding: 30px; border-radius: var(--radio); box-shadow: var(--sombra); width: 100%; max-width: 420px; text-align: center; }
+        .login-logos { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .login-logos img { height: 60px; object-fit: contain; }
         .login-card h1 { color: var(--rojo-rovers); font-size: 20px; margin-bottom: 4px; }
         .login-card .subtitle { color: var(--gris-oscuro); font-size: 14px; margin-bottom: 4px; font-weight: 600; }
         .login-card .fecha { color: #666; font-size: 12px; margin-bottom: 20px; }
-
-        .login-card input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
-            border: 2px solid var(--gris-medio);
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            padding: 14px;
-            background: var(--rojo-rovers);
-            color: var(--blanco);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
+        .login-card input { width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid var(--gris-medio); border-radius: 8px; font-size: 14px; }
+        .btn-primary { width: 100%; padding: 14px; background: var(--rojo-rovers); color: var(--blanco); border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         .quick-access { display: flex; gap: 10px; margin-top: 16px; }
-
-        .btn-quick {
-            flex: 1;
-            padding: 10px 5px;
-            border: 2px solid var(--gris-medio);
-            background: var(--blanco);
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
+        .btn-quick { flex: 1; padding: 10px 5px; border: 2px solid var(--gris-medio); background: var(--blanco); border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
         .btn-quick.cprj { border-color: var(--naranja-rovers); color: var(--naranja-rovers); }
         .btn-quick.consejo { border-color: var(--morado-scouts); color: var(--morado-scouts); }
 
         /* ===== HEADER ===== */
-        .header {
-            background: linear-gradient(90deg, var(--rojo-rovers), var(--naranja-rovers));
-            color: var(--blanco);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            z-index: 10;
-        }
-
+        .header { background: linear-gradient(90deg, var(--rojo-rovers), var(--naranja-rovers)); color: var(--blanco); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 10; }
         .header-left { display: flex; align-items: center; gap: 10px; }
         .header-left img { height: 35px; object-fit: contain; }
         .header-left h2 { font-size: 15px; font-weight: 600; }
-
         .header-right { display: flex; align-items: center; gap: 12px; }
         .header-right .user-info { font-size: 12px; text-align: right; display: none; }
         .header-right .user-info small { display: block; opacity: 0.8; font-size: 10px; }
-        .header-right button {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: var(--blanco);
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-        }
+        .header-right button { background: rgba(255,255,255,0.2); border: none; color: var(--blanco); padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
 
-        /* ===== LAYOUT PRINCIPAL ===== */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column; /* Apilado en móvil */
-            overflow: hidden;
-        }
-
-        .sidebar {
-            width: 100%;
-            background: var(--gris-claro);
-            display: flex;
-            flex-direction: row; /* Menú horizontal en móvil */
-            overflow-x: auto;
-            border-bottom: 1px solid var(--gris-medio);
-            padding: 8px;
-            gap: 8px;
-        }
-
-        .sidebar button {
-            background: var(--blanco);
-            border: 1px solid var(--gris-medio);
-            padding: 10px 14px;
-            font-size: 12px;
-            color: var(--gris-oscuro);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column; /* Icono arriba, texto abajo */
-            align-items: center;
-            gap: 4px;
-            border-radius: 8px;
-            min-width: 70px;
-            transition: all 0.3s;
-        }
-
-        .sidebar button.active {
-            background: var(--rojo-rovers);
-            color: var(--blanco);
-            border-color: var(--rojo-rovers);
-        }
-
+        /* ===== LAYOUT ===== */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .sidebar { width: 100%; background: var(--gris-claro); display: flex; flex-direction: row; overflow-x: auto; border-bottom: 1px solid var(--gris-medio); padding: 8px; gap: 8px; }
+        .sidebar button { background: var(--blanco); border: 1px solid var(--gris-medio); padding: 10px 14px; font-size: 12px; color: var(--gris-oscuro); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; border-radius: 8px; min-width: 70px; transition: all 0.3s; }
+        .sidebar button.active { background: var(--rojo-rovers); color: var(--blanco); border-color: var(--rojo-rovers); }
         .sidebar button .icon { font-size: 18px; }
         .sidebar button .label { font-size: 10px; font-weight: 600; }
+        .content-area { flex: 1; padding: 20px; overflow-y: auto; background: var(--blanco); }
 
-        /* ===== ÁREA DE CONTENIDO ===== */
-        .content-area {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: var(--blanco);
-        }
-
+        /* ===== TARJETAS Y COMPONENTES ===== */
         .section-title { font-size: 22px; color: var(--rojo-rovers); margin-bottom: 4px; }
         .section-subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
-
-        /* ===== TARJETAS ===== */
-        .card {
-            background: var(--blanco);
-            border: 1px solid var(--gris-medio);
-            border-radius: var(--radio);
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-
+        .card { background: var(--blanco); border: 1px solid var(--gris-medio); border-radius: var(--radio); padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .card-header h3 { font-size: 16px; color: var(--gris-oscuro); }
         .card-body p { font-size: 14px; color: #555; margin-bottom: 8px; }
 
-        /* ===== BADGES ===== */
         .badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
         .badge-success { background: #E8F5E9; color: #2E7D32; }
         .badge-warning { background: #FFF3E0; color: #E65100; }
         .badge-danger { background: #FFEBEE; color: #C62828; }
         .badge-info { background: #E3F2FD; color: #1565C0; }
 
-        /* ===== CRONOGRAMA INTERACTIVO (TIMELINE) ===== */
-        .timeline {
-            position: relative;
-            margin-top: 20px;
-            padding-left: 30px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 9px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--gris-medio);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 24px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(5px);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -30px;
-            top: 2px;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--blanco);
-            border: 4px solid var(--gris-medio);
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .timeline-item.active .timeline-dot {
-            border-color: var(--rojo-rovers);
-            background: var(--rojo-rovers);
-            box-shadow: 0 0 0 4px rgba(227, 6, 19, 0.2);
-        }
-
-        .timeline-item.completed .timeline-dot {
-            border-color: var(--verde-scouts);
-            background: var(--verde-scouts);
-        }
-
-        .timeline-content {
-            background: var(--gris-claro);
-            padding: 12px 16px;
-            border-radius: 8px;
-            border-left: 4px solid var(--gris-medio);
-        }
-
-        .timeline-item.active .timeline-content {
-            background: #FFF3E0;
-            border-left-color: var(--rojo-rovers);
-        }
-
-        .timeline-item.completed .timeline-content {
-            background: #E8F5E9;
-            border-left-color: var(--verde-scouts);
-        }
-
+        .timeline { position: relative; margin-top: 20px; padding-left: 30px; }
+        .timeline::before { content: ''; position: absolute; left: 9px; top: 0; bottom: 0; width: 4px; background: var(--gris-medio); border-radius: 2px; }
+        .timeline-item { position: relative; margin-bottom: 24px; cursor: pointer; transition: transform 0.2s; }
+        .timeline-item:hover { transform: translateX(5px); }
+        .timeline-dot { position: absolute; left: -30px; top: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--blanco); border: 4px solid var(--gris-medio); z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 12px;}
+        .timeline-item.active .timeline-dot { border-color: var(--rojo-rovers); background: var(--rojo-rovers); box-shadow: 0 0 0 4px rgba(227, 6, 19, 0.2); }
+        .timeline-item.completed .timeline-dot { border-color: var(--verde-scouts); background: var(--verde-scouts); }
+        .timeline-content { background: var(--gris-claro); padding: 12px 16px; border-radius: 8px; border-left: 4px solid var(--gris-medio); }
+        .timeline-item.active .timeline-content { background: #FFF3E0; border-left-color: var(--rojo-rovers); }
+        .timeline-item.completed .timeline-content { background: #E8F5E9; border-left-color: var(--verde-scouts); }
         .timeline-content h4 { font-size: 15px; color: var(--gris-oscuro); margin-bottom: 4px; }
         .timeline-content p { font-size: 12px; color: #666; margin: 0; }
         .timeline-content .time { font-size: 11px; font-weight: 600; color: var(--azul-slp); display: block; margin-top: 6px; }
 
-        /* ===== GRID DE CANDIDATOS ===== */
-        .candidates-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* 1 columna en móvil */
-            gap: 16px;
-        }
-
-        .candidate-card {
-            background: var(--blanco);
-            border: 1px solid var(--gris-medio);
-            border-radius: var(--radio);
-            padding: 16px;
-            text-align: center;
-        }
-
-        .candidate-card .avatar {
-            width: 70px; height: 70px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--rojo-rovers), var(--naranja-rovers));
-            color: var(--blanco); display: flex; align-items: center; justify-content: center;
-            font-size: 28px; font-weight: bold; margin: 0 auto 12px;
-        }
-
+        .candidates-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        .candidate-card { background: var(--blanco); border: 1px solid var(--gris-medio); border-radius: var(--radio); padding: 16px; text-align: center; }
+        .candidate-card .avatar { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--rojo-rovers), var(--naranja-rovers)); color: var(--blanco); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; margin: 0 auto 12px; }
         .candidate-card h4 { font-size: 16px; color: var(--gris-oscuro); margin-bottom: 4px; }
         .candidate-card .group { font-size: 12px; color: #666; margin-bottom: 8px; }
         .candidate-card .position { font-size: 12px; color: var(--rojo-rovers); font-weight: 600; margin-bottom: 10px; }
         .candidate-card .propuesta { font-size: 12px; color: #555; font-style: italic; padding: 8px; background: var(--gris-claro); border-radius: 6px; margin-bottom: 12px; }
 
-        /* ===== BOTONES ===== */
         .btn-voto { width: 100%; padding: 12px; background: var(--rojo-rovers); color: var(--blanco); border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
         .btn-voto:disabled { background: var(--gris-medio); cursor: not-allowed; }
         .btn-secondary { padding: 10px 20px; background: var(--rojo-rovers); color: var(--blanco); border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
         .btn-outline { padding: 10px 20px; background: transparent; color: var(--rojo-rovers); border: 2px solid var(--rojo-rovers); border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
 
-        /* ===== MODALES Y TOAST ===== */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
         .modal-overlay.active { display: flex; }
         .modal { background: var(--blanco); border-radius: var(--radio); padding: 24px; max-width: 400px; width: 100%; text-align: center; }
         .modal h3 { font-size: 18px; color: var(--rojo-rovers); margin-bottom: 12px; }
         .modal p { font-size: 14px; color: #666; margin-bottom: 20px; }
         .modal .modal-buttons { display: flex; gap: 10px; justify-content: center; }
+        .modal input, .modal select { width: 100%; padding: 10px; margin-bottom: 10px; border: 2px solid var(--gris-medio); border-radius: 8px; font-size: 14px; }
+
         .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--gris-oscuro); color: var(--blanco); padding: 12px 20px; border-radius: 8px; font-size: 13px; opacity: 0; transition: all 0.3s; z-index: 2000; width: 90%; max-width: 350px; text-align: center; }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
         .toast.success { background: var(--verde-scouts); }
@@ -357,57 +116,20 @@
 
         .progress-bar { width: 100%; height: 10px; background: var(--gris-medio); border-radius: 5px; overflow: hidden; margin-top: 8px; }
         .progress-bar .fill { height: 100%; background: var(--rojo-rovers); border-radius: 5px; transition: width 0.5s ease; }
-
         .hidden { display: none !important; }
 
-        /* ===== MEDIA QUERIES PARA PC ===== */
         @media (min-width: 769px) {
-            body { padding: 20px; }
-            .app-container { height: 90vh; }
-            .login-card { padding: 40px; max-width: 480px; }
-            .login-logos img { height: 70px; }
-            .login-card h1 { font-size: 22px; }
-            
-            .header { padding: 12px 24px; }
-            .header-left img { height: 40px; }
-            .header-left h2 { font-size: 16px; }
-            .header-right .user-info { display: block; font-size: 13px; }
-            .header-right .user-info small { font-size: 11px; }
-
+            body { padding: 20px; } .app-container { height: 90vh; }
+            .login-card { padding: 40px; max-width: 480px; } .login-logos img { height: 70px; } .login-card h1 { font-size: 22px; }
+            .header { padding: 12px 24px; } .header-left img { height: 40px; } .header-left h2 { font-size: 16px; }
+            .header-right .user-info { display: block; font-size: 13px; } .header-right .user-info small { font-size: 11px; }
             .main-content { flex-direction: row; }
-            
-            .sidebar {
-                width: 220px;
-                flex-direction: column;
-                padding: 16px 0;
-                border-bottom: none;
-                border-right: 1px solid var(--gris-medio);
-            }
-
-            .sidebar button {
-                width: 100%;
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 12px;
-                border: none;
-                border-left: 4px solid transparent;
-                border-radius: 0;
-                background: transparent;
-                padding: 14px 20px;
-            }
-
-            .sidebar button.active {
-                background: var(--blanco);
-                color: var(--rojo-rovers);
-                border-left-color: var(--rojo-rovers);
-            }
-            
+            .sidebar { width: 220px; flex-direction: column; padding: 16px 0; border-bottom: none; border-right: 1px solid var(--gris-medio); }
+            .sidebar button { width: 100%; flex-direction: row; justify-content: flex-start; gap: 12px; border: none; border-left: 4px solid transparent; border-radius: 0; background: transparent; padding: 14px 20px; }
+            .sidebar button.active { background: var(--blanco); color: var(--rojo-rovers); border-left-color: var(--rojo-rovers); }
             .sidebar button:hover { background: var(--gris-medio); }
-            .sidebar button .icon { font-size: 18px; }
-            .sidebar button .label { font-size: 13px; }
-
-            .content-area { padding: 24px; }
-            .candidates-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .sidebar button .icon { font-size: 18px; } .sidebar button .label { font-size: 13px; }
+            .content-area { padding: 24px; } .candidates-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
             .toast { left: auto; right: 24px; transform: translateY(20px); width: auto; max-width: 350px; text-align: left; }
             .toast.show { transform: translateY(0); }
         }
@@ -416,7 +138,6 @@
 <body>
 
 <div class="app-container">
-
     <!-- ===== PANTALLA DE LOGIN ===== -->
     <div id="login-screen">
         <div class="login-card">
@@ -441,7 +162,6 @@
 
     <!-- ===== APLICACIÓN PRINCIPAL ===== -->
     <div id="app-screen" class="hidden" style="height: 100%; display: flex; flex-direction: column;">
-
         <div class="header">
             <div class="header-left">
                 <img src="rovers mexico slp.png" alt="Rovers México" onerror="this.style.display='none'">
@@ -457,7 +177,6 @@
         </div>
 
         <div class="main-content">
-            <!-- SIDEBAR (Se oculta el botón de Participantes para Rovers) -->
             <div class="sidebar" id="sidebar">
                 <button class="active" onclick="showSection('dashboard', this)">
                     <span class="icon">🏠</span><span class="label">Inicio</span>
@@ -486,10 +205,9 @@
             <div class="content-area" id="content-area"></div>
         </div>
     </div>
-
 </div>
 
-<!-- ===== MODAL CONFIRMACIÓN ===== -->
+<!-- ===== MODAL CONFIRMACIÓN VOTO ===== -->
 <div class="modal-overlay" id="modal-overlay">
     <div class="modal">
         <h3 id="modal-title">Confirmar Voto</h3>
@@ -504,9 +222,9 @@
 <!-- ===== MODAL CONTRASEÑA ===== -->
 <div class="modal-overlay" id="password-overlay">
     <div class="modal">
-        <h3 id="password-title">Acceso Restringido</h3>
+        <h3>Acceso Restringido</h3>
         <p>Ingresa la contraseña para acceder.</p>
-        <input type="password" id="password-input" placeholder="Contraseña" style="width: 100%; padding: 12px; margin-bottom: 16px; border: 2px solid var(--gris-medio); border-radius: 8px; font-size: 14px; text-align: center;">
+        <input type="password" id="password-input" placeholder="Contraseña" style="text-align: center;">
         <div class="modal-buttons">
             <button class="btn-outline" onclick="closePasswordModal()">Cancelar</button>
             <button class="btn-primary" style="width: auto; padding: 10px 20px;" onclick="verificarPassword()">Ingresar</button>
@@ -514,53 +232,66 @@
     </div>
 </div>
 
+<!-- ===== MODAL AGREGAR PARTICIPANTE ===== -->
+<div class="modal-overlay" id="add-participant-overlay">
+    <div class="modal">
+        <h3>Registrar Nuevo Participante</h3>
+        <p>Ingresa el CUM y selecciona el Grupo/Clan.</p>
+        <input type="text" id="new-participant-cum" placeholder="CUM del Rover (Ej. SLP22350)">
+        <select id="new-participant-grupo">
+            <option value="Grupo 1 Tequihua">Grupo 1 - Tequihua</option>
+            <option value="Grupo 2 Avalon">Grupo 2 - Avalon</option>
+            <option value="Grupo 4 San Jorge">Grupo 4 - San Jorge</option>
+            <option value="Grupo 5 Avanzada">Grupo 5 - Avanzada</option>
+            <option value="Grupo 16 San Juan Bosco">Grupo 16 - San Juan Bosco</option>
+        </select>
+        <div class="modal-buttons" style="margin-top: 15px;">
+            <button class="btn-outline" onclick="closeAddParticipantModal()">Cancelar</button>
+            <button class="btn-primary" style="width: auto; padding: 10px 20px;" onclick="guardarParticipante()">Guardar</button>
+        </div>
+    </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-    // ===== ESTADO Y DATOS =====
+    // ===== ESTADO GLOBAL =====
     let currentUser = null;
     let currentRole = null;
     let pendingVoteAction = null;
     let votedItems = new Set();
     let pendingRoleAccess = null;
-
     const PASSWORDS = { cprj: '123', consejo: '456' };
 
-    const mockData = {
-        rovers: {
-            participantes: [
-                { nombre: "Pedro Sánchez", cum: "SLP22345", clan: "Clan Fénix", grupo: "Grupo 1 Tequihua", acreditado: true, votoEmitido: false },
-                { nombre: "Laura Díaz", cum: "SLP22346", clan: "Clan Dragón", grupo: "Grupo 2 Avalon", acreditado: true, votoEmitido: true },
-                { nombre: "Miguel Ángel", cum: "SLP22347", clan: "Clan Fénix", grupo: "Grupo 4 San Jorge", acreditado: true, votoEmitido: false },
-                { nombre: "Sofía Ramírez", cum: "SLP22348", clan: "Clan Águila", grupo: "Grupo 16 San Juan Bosco", acreditado: true, votoEmitido: false },
-                { nombre: "Diego Flores", cum: "SLP22349", clan: "Clan Dragón", grupo: "Grupo 5 Avanzada", acreditado: true, votoEmitido: false }
-            ],
-            temas: [
-                { id: 1, titulo: "Vinculación profesional", descripcion: "Base de datos de profesiones.", votos: 10 },
-                { id: 2, titulo: "Proyectos de impacto social", descripcion: "Impulsar proyectos con ODS.", votos: 14 },
-                { id: 3, titulo: "Formación continua", descripcion: "Talleres de liderazgo.", votos: 8 }
-            ],
-            candidatos: [
-                { nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", clan: "Clan Fénix", puesto: "Coordinador CPRJ", inicial: "PS", propuesta: "Red de contactos profesionales." },
-                { nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", clan: "Clan Dragón", puesto: "Coordinador CPRJ", inicial: "LD", propuesta: "Talleres de emprendimiento." },
-                { nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", clan: "Clan Fénix", puesto: "Coordinador CPRJ", inicial: "MA", propuesta: "Vinculación con universidades." },
-                { nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", clan: "Clan Águila", puesto: "Coordinador CPRJ", inicial: "SR", propuesta: "Bolsa de trabajo scout." }
-            ],
-            recomendaciones: [
-                { id: 1, titulo: "Vinculación profesional", proponente: "Pedro Sánchez", secundada: true, votos: 25, estatus: "En Votación" },
-                { id: 2, titulo: "Formación continua", proponente: "Laura Díaz", secundada: false, votos: 0, estatus: "En Secundado" },
-                { id: 3, titulo: "Proyectos de impacto social", proponente: "Sofía Ramírez", secundada: true, votos: 18, estatus: "Aprobada" }
-            ]
-        }
-    };
+    // ===== DATOS SIMULADOS =====
+    // Aquí se guardan los participantes que el comité va registrando
+    let participantesDB = [
+        { cum: "SLP22345", nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", clan: "Clan Fénix", acreditado: true, votoEmitido: false },
+        { cum: "SLP22346", nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", clan: "Clan Dragón", acreditado: true, votoEmitido: true },
+        { cum: "SLP22347", nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", clan: "Clan Fénix", acreditado: true, votoEmitido: false },
+        { cum: "SLP22348", nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", clan: "Clan Águila", acreditado: true, votoEmitido: false }
+    ];
 
-    // ===== LOGIN Y ACCESOS =====
+    const candidatosDB = [
+        { nombre: "Pedro Sánchez", grupo: "Grupo 1 Tequihua", inicial: "PS", propuesta: "Red de contactos profesionales." },
+        { nombre: "Laura Díaz", grupo: "Grupo 2 Avalon", inicial: "LD", propuesta: "Talleres de emprendimiento." },
+        { nombre: "Miguel Ángel", grupo: "Grupo 4 San Jorge", inicial: "MA", propuesta: "Vinculación con universidades." },
+        { nombre: "Sofía Ramírez", grupo: "Grupo 16 San Juan Bosco", inicial: "SR", propuesta: "Bolsa de trabajo scout." }
+    ];
+
+    // ===== LÓGICA DE LOGIN Y ACCESOS =====
     function login(tipo) {
         if (tipo === 'rover') {
-            const cum = document.getElementById('login-cum').value.trim();
-            const fecha = document.getElementById('login-fecha').value;
-            if (!cum || !fecha) { showToast('Ingresa CUM y fecha.', 'error'); return; }
-            currentUser = { cum: cum, nombre: 'Pedro Sánchez', grupo: 'Grupo 1 Tequihua', rol: 'rover' };
+            const cumInput = document.getElementById('login-cum').value.trim();
+            // VALIDACIÓN: Solo entra si el CUM está en la base de datos
+            const participante = participantesDB.find(p => p.cum === cumInput);
+            
+            if (!participante) {
+                showToast('❌ Acceso denegado. Tu CUM no está registrado como participante. Contacta al CPRJ.', 'error');
+                return;
+            }
+
+            currentUser = participante;
             currentRole = 'rover';
         } else if (tipo === 'cprj') {
             currentUser = { cum: 'CPRJ-001', nombre: 'Comité de Red', grupo: 'CPRJ SLP', rol: 'cprj' };
@@ -574,15 +305,10 @@
         document.getElementById('app-screen').classList.remove('hidden');
 
         document.getElementById('header-user').textContent = currentUser.nombre;
-        document.getElementById('header-role').textContent = currentUser.grupo + ' - ' + currentUser.rol.toUpperCase();
+        document.getElementById('header-role').textContent = (currentUser.grupo || '') + ' - ' + (currentRole === 'rover' ? 'Rover' : currentRole.toUpperCase());
 
         // Mostrar/Ocultar botón de Participantes
-        const btnPart = document.getElementById('btn-participantes');
-        if (currentRole === 'cprj' || currentRole === 'consejo') {
-            btnPart.style.display = 'flex';
-        } else {
-            btnPart.style.display = 'none';
-        }
+        document.getElementById('btn-participantes').style.display = (currentRole === 'cprj' || currentRole === 'consejo') ? 'flex' : 'none';
 
         showSection('dashboard', document.querySelector('.sidebar button'));
         showToast('Bienvenido, ' + currentUser.nombre, 'success');
@@ -599,7 +325,6 @@
         pendingRoleAccess = rol;
         document.getElementById('password-input').value = '';
         document.getElementById('password-overlay').classList.add('active');
-        setTimeout(() => document.getElementById('password-input').focus(), 100);
     }
 
     function verificarPassword() {
@@ -609,127 +334,77 @@
             login(pendingRoleAccess);
         } else {
             showToast('Contraseña incorrecta.', 'error');
-            document.getElementById('password-input').value = '';
         }
     }
 
-    function closePasswordModal() {
-        document.getElementById('password-overlay').classList.remove('active');
-        pendingRoleAccess = null;
-    }
+    function closePasswordModal() { document.getElementById('password-overlay').classList.remove('active'); pendingRoleAccess = null; }
 
     // ===== NAVEGACIÓN =====
     function showSection(section, btn) {
         document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
         if (btn) btn.classList.add('active');
-
         const content = document.getElementById('content-area');
-        const data = mockData.rovers;
 
         switch(section) {
-            case 'dashboard': renderDashboard(content, data); break;
-            case 'participantes': renderParticipantes(content, data); break;
-            case 'agenda': renderAgenda(content, data); break;
-            case 'candidaturas': renderCandidaturas(content, data); break;
-            case 'recomendaciones': renderRecomendaciones(content, data); break;
-            case 'elecciones': renderElecciones(content, data); break;
-            case 'actas': renderActas(content, data); break;
+            case 'dashboard': renderDashboard(content); break;
+            case 'participantes': renderParticipantes(content); break;
+            case 'agenda': renderAgenda(content); break;
+            case 'candidaturas': renderCandidaturas(content); break;
+            case 'recomendaciones': renderRecomendaciones(content); break;
+            case 'elecciones': renderElecciones(content); break;
+            case 'actas': renderActas(content); break;
         }
     }
 
-    // ===== RENDERIZADO: DASHBOARD CON CRONOGRAMA INTERACTIVO =====
-    function renderDashboard(container, data) {
+    // ===== RENDERIZADO: DASHBOARD =====
+    function renderDashboard(container) {
         let html = `
             <h2 class="section-title">Bienvenido, ${currentUser.nombre}</h2>
-            <p class="section-subtitle">Foro Provincial de Rovers 2027 - 13 y 14 de febrero</p>
+            <p class="section-subtitle">Foro Provincial de Rovers 2027</p>
         `;
-
         if (currentRole === 'rover') {
-            const acreditados = data.participantes.filter(p => p.acreditado).length;
-            const total = data.participantes.length;
+            const acreditados = participantesDB.filter(p => p.acreditado).length;
+            const total = participantesDB.length;
             const porcentaje = Math.round((acreditados / total) * 100);
-            
-            // Simulamos que estamos en la fase "Discusión de Recomendaciones" para la demo
-            const faseActual = 3; 
 
             html += `
                 <div class="card">
-                    <div class="card-header">
-                        <h3>📊 Estado del Foro</h3>
-                        <span class="badge badge-success">En Curso</span>
-                    </div>
+                    <div class="card-header"><h3>📊 Estado del Foro</h3><span class="badge badge-success">En Curso</span></div>
                     <div class="card-body">
                         <p>Participantes acreditados: <strong>${acreditados} / ${total}</strong></p>
                         <div class="progress-bar"><div class="fill" style="width: ${porcentaje}%"></div></div>
                     </div>
                 </div>
-
                 <div class="card">
-                    <div class="card-header">
-                        <h3>📅 Cronograma Interactivo</h3>
-                        <span class="badge badge-info">Haz clic en una etapa</span>
-                    </div>
+                    <div class="card-header"><h3>📅 Cronograma Interactivo</h3><span class="badge badge-info">Toca una etapa</span></div>
                     <div class="card-body">
                         <div class="timeline">
-                            <!-- Etapa 1 -->
-                            <div class="timeline-item completed" onclick="showToast('Etapa finalizada: Registro y acreditación.', 'success')">
+                            <div class="timeline-item completed" onclick="showToast('Etapa finalizada.', 'success')">
                                 <div class="timeline-dot">✅</div>
-                                <div class="timeline-content">
-                                    <h4>Registro y Acreditación</h4>
-                                    <p>Los rovers reciben su token QR para votar.</p>
-                                    <span class="time">🕒 08:00 AM - 09:30 AM</span>
-                                </div>
+                                <div class="timeline-content"><h4>Registro y Acreditación</h4><span class="time">🕒 08:00 AM - 09:30 AM</span></div>
                             </div>
-                            <!-- Etapa 2 -->
-                            <div class="timeline-item completed" onclick="showToast('Etapa finalizada: Votación de temas de agenda.', 'success')">
+                            <div class="timeline-item completed" onclick="showToast('Etapa finalizada.', 'success')">
                                 <div class="timeline-dot">✅</div>
-                                <div class="timeline-content">
-                                    <h4>Votación de Temas</h4>
-                                    <p>Se eligen los temas de interés local para el foro.</p>
-                                    <span class="time">🕒 10:00 AM - 11:00 AM</span>
-                                </div>
+                                <div class="timeline-content"><h4>Votación de Temas</h4><span class="time">🕒 10:00 AM - 11:00 AM</span></div>
                             </div>
-                            <!-- Etapa 3 -->
-                            <div class="timeline-item active" onclick="showToast('¡Estamos aquí! Discusión de recomendaciones en curso.', 'info')">
+                            <div class="timeline-item active" onclick="showToast('¡Estamos aquí! Discusión en curso.', 'info')">
                                 <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Discusión y Recomendaciones</h4>
-                                    <p>Mesas de trabajo para proponer y secundar recomendaciones.</p>
-                                    <span class="time">🕒 11:30 AM - 02:00 PM</span>
-                                </div>
+                                <div class="timeline-content"><h4>Discusión y Recomendaciones</h4><span class="time">🕒 11:30 AM - 02:00 PM</span></div>
                             </div>
-                            <!-- Etapa 4 -->
-                            <div class="timeline-item" onclick="showToast('Próximamente: Elección de Coordinadores.', 'info')">
+                            <div class="timeline-item" onclick="showToast('Próximamente: Elecciones.', 'info')">
                                 <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Elección de Coordinadores</h4>
-                                    <p>Votación por Clan para elegir al CPRJ.</p>
-                                    <span class="time">🕒 04:00 PM - 05:30 PM</span>
-                                </div>
-                            </div>
-                            <!-- Etapa 5 -->
-                            <div class="timeline-item" onclick="showToast('Próximamente: Generación de Acta.', 'info')">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
-                                    <h4>Clausura y Acta</h4>
-                                    <p>Firma del acta de instalación y despedida.</p>
-                                    <span class="time">🕒 06:00 PM</span>
-                                </div>
+                                <div class="timeline-content"><h4>Elección de Coordinadores</h4><span class="time">🕒 04:00 PM - 05:30 PM</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
         } else {
-            // Vistas para CPRJ y Consejo
             html += `
                 <div class="card">
-                    <div class="card-header">
-                        <h3>🛠️ Panel de Control (${currentRole === 'cprj' ? 'CPRJ' : 'Consejo'})</h3>
-                        <span class="badge badge-warning">Gestión</span>
-                    </div>
+                    <div class="card-header"><h3>🛠️ Panel de Control (${currentRole === 'cprj' ? 'CPRJ' : 'Consejo'})</h3><span class="badge badge-warning">Gestión</span></div>
                     <div class="card-body">
-                        <p>Participantes registrados: <strong>20</strong></p>
+                        <p>Participantes registrados: <strong>${participantesDB.length}</strong></p>
                         <p>Recomendaciones en votación: <strong>3</strong></p>
                         <button class="btn-secondary" style="margin-top: 10px;" onclick="showToast('Acción ejecutada', 'info')">Cerrar Votación Actual</button>
                     </div>
@@ -739,150 +414,231 @@
         container.innerHTML = html;
     }
 
-    // ===== RENDERIZADO: PARTICIPANTES (Solo CPRJ / Consejo) =====
-    function renderParticipantes(container, data) {
+    // ===== RENDERIZADO: PARTICIPANTES (CRUD PARA CPRJ/CONSEJO) =====
+    function renderParticipantes(container) {
+        // Calcular votos usados por grupo
+        const votosPorGrupo = {};
+        participantesDB.forEach(p => {
+            if (p.votoEmitido) {
+                votosPorGrupo[p.grupo] = (votosPorGrupo[p.grupo] || 0) + 1;
+            }
+        });
+
         let html = `
-            <h2 class="section-title">Lista de Participantes</h2>
-            <p class="section-subtitle">Control de acreditación y votos emitidos</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                <div>
+                    <h2 class="section-title">Participantes</h2>
+                    <p class="section-subtitle">Control de acreditación y votos por Grupo</p>
+                </div>
+                <button class="btn-secondary" onclick="openAddParticipantModal()">+ Registrar Rover</button>
+            </div>
+            
             <div class="card" style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 500px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 600px;">
                     <thead>
                         <tr style="background: var(--gris-claro); text-align: left;">
+                            <th style="padding: 10px;">CUM</th>
                             <th style="padding: 10px;">Nombre</th>
-                            <th style="padding: 10px;">Clan</th>
-                            <th style="padding: 10px;">Acreditado</th>
-                            <th style="padding: 10px;">Voto</th>
+                            <th style="padding: 10px;">Grupo</th>
+                            <th style="padding: 10px;">Voto Electoral</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${data.participantes.map(p => `
+                        ${participantesDB.map(p => `
                             <tr style="border-bottom: 1px solid var(--gris-medio);">
+                                <td style="padding: 10px;">${p.cum}</td>
                                 <td style="padding: 10px;">${p.nombre}</td>
-                                <td style="padding: 10px;">${p.clan}</td>
-                                <td style="padding: 10px;"><span class="badge ${p.acreditado ? 'badge-success' : 'badge-warning'}">${p.acreditado ? 'Sí' : 'No'}</span></td>
+                                <td style="padding: 10px;">${p.grupo}</td>
                                 <td style="padding: 10px;"><span class="badge ${p.votoEmitido ? 'badge-info' : 'badge-danger'}">${p.votoEmitido ? 'Sí' : 'No'}</span></td>
                             </tr>
                         `).join('')}
                     </tbody>
                 </table>
             </div>
+            
+            <div class="card">
+                <div class="card-header"><h3>📊 Votos emitidos por Grupo (Límite: 2)</h3></div>
+                <div class="card-body">
+                    ${Object.keys(votosPorGrupo).map(g => `<p>${g}: <strong>${votosPorGrupo[g]} votos</strong></p>`).join('') || '<p>Ningún grupo ha emitido votos aún.</p>'}
+                </div>
+            </div>
         `;
         container.innerHTML = html;
     }
 
-    // ===== OTRAS SECCIONES =====
-    function renderAgenda(container, data) {
-        let html = `<h2 class="section-title">Agenda</h2><p class="section-subtitle">Vota por los temas</p>`;
-        data.temas.forEach(t => {
-            const yaVoto = votedItems.has('tema-' + t.id);
-            html += `
-                <div class="card">
-                    <div class="card-header"><h3>${t.titulo}</h3><span class="badge badge-info">${t.votos} votos</span></div>
-                    <div class="card-body">
-                        <p>${t.descripcion}</p>
-                        ${currentRole === 'rover' ? `<button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarTema(${t.id})">${yaVoto ? '✅ Votado' : '🗳️ Votar'}</button>` : `<button class="btn-secondary" onclick="showToast('Editar tema', 'info')">✏️ Editar</button>`}
-                    </div>
-                </div>`;
-        });
-        container.innerHTML = html;
+    // ===== AGREGAR PARTICIPANTE =====
+    function openAddParticipantModal() {
+        document.getElementById('new-participant-cum').value = '';
+        document.getElementById('add-participant-overlay').classList.add('active');
     }
 
-    function renderCandidaturas(container, data) {
-        let html = `<h2 class="section-title">Candidatos</h2><p class="section-subtitle">Conoce sus propuestas</p><div class="candidates-grid">`;
-        data.candidatos.forEach(c => {
-            html += `
-                <div class="candidate-card">
-                    <div class="avatar">${c.inicial}</div>
-                    <h4>${c.nombre}</h4>
-                    <p class="group">${c.grupo} - ${c.clan}</p>
-                    <p class="position">${c.puesto}</p>
-                    <p class="propuesta">"${c.propuesta}"</p>
-                </div>`;
-        });
-        html += `</div>`;
-        container.innerHTML = html;
+    function closeAddParticipantModal() {
+        document.getElementById('add-participant-overlay').classList.remove('active');
     }
 
-    function renderRecomendaciones(container, data) {
-        let html = `<h2 class="section-title">Recomendaciones</h2><p class="section-subtitle">Propuestas para la Red</p>`;
-        data.recomendaciones.forEach(r => {
-            const yaVoto = votedItems.has('rec-' + r.id);
-            html += `
-                <div class="card">
-                    <div class="card-header"><h3>${r.titulo}</h3><span class="badge ${r.estatus === 'Aprobada' ? 'badge-success' : 'badge-warning'}">${r.estatus}</span></div>
-                    <div class="card-body">
-                        <p>Propone: ${r.proponente} | Votos: ${r.votos}</p>
-                        ${currentRole === 'rover' && r.secundada ? `<button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarRecomendacion(${r.id})">${yaVoto ? '✅ Votado' : '🗳️ Votar'}</button>` : ''}
-                        ${currentRole === 'rover' && !r.secundada ? `<button class="btn-outline" onclick="showToast('Secundada', 'success')">✋ Secundar</button>` : ''}
-                    </div>
-                </div>`;
+    function guardarParticipante() {
+        const cum = document.getElementById('new-participant-cum').value.trim();
+        const grupo = document.getElementById('new-participant-grupo').value;
+
+        if (!cum) {
+            showToast('Ingresa un CUM válido.', 'error');
+            return;
+        }
+
+        // Validar que no esté duplicado
+        if (participantesDB.find(p => p.cum === cum)) {
+            showToast('Este CUM ya está registrado.', 'error');
+            return;
+        }
+
+        // Agregar a la "Base de Datos"
+        participantesDB.push({
+            cum: cum,
+            nombre: 'Rover Nuevo', // En producción, se buscaría en el padrón nacional
+            grupo: grupo,
+            clan: 'Clan Asignado',
+            acreditado: true,
+            votoEmitido: false
         });
-        container.innerHTML = html;
+
+        closeAddParticipantModal();
+        showToast('Participante registrado exitosamente.', 'success');
+        
+        // Refrescar vista
+        if (currentRole !== 'rover') {
+            showSection('participantes', document.getElementById('btn-participantes'));
+        }
     }
 
-    function renderElecciones(container, data) {
-        let html = `<h2 class="section-title">Elecciones</h2><p class="section-subtitle">Vota por tu Coordinador</p><div class="candidates-grid">`;
-        data.candidatos.forEach(c => {
-            const yaVoto = votedItems.has('eleccion-' + c.nombre);
-            html += `
-                <div class="candidate-card">
-                    <div class="avatar">${c.inicial}</div>
-                    <h4>${c.nombre}</h4>
-                    <p class="group">${c.grupo}</p>
-                    ${currentRole === 'rover' ? `<button class="btn-voto" ${yaVoto ? 'disabled' : ''} onclick="votarCandidato('${c.nombre}')">${yaVoto ? '✅ Votado' : '🗳️ Votar'}</button>` : ''}
-                </div>`;
-        });
-        html += `</div>`;
-        container.innerHTML = html;
-    }
-
-    function renderActas(container, data) {
+    // ===== RENDERIZADO: AGENDA Y RECOMENDACIONES =====
+    function renderAgenda(container) {
         container.innerHTML = `
-            <h2 class="section-title">Actas</h2>
-            <p class="section-subtitle">Documentos oficiales</p>
-            <div class="card">
-                <div class="card-body">
-                    <p>El acta se generará al finalizar el foro.</p>
-                    <button class="btn-secondary" disabled>Descargar PDF</button>
-                </div>
-            </div>`;
+            <h2 class="section-title">Agenda</h2>
+            <p class="section-subtitle">Vota por los temas de interés</p>
+            <div class="card"><div class="card-body"><p>La votación de temas se realiza en plenaria.</p></div></div>
+        `;
     }
 
-    // ===== LÓGICA DE VOTOS =====
-    function votarTema(id) { registrarVoto('tema', id, 'Confirmar Voto de Tema'); }
-    function votarRecomendacion(id) { registrarVoto('rec', id, 'Confirmar Voto de Recomendación'); }
-    function votarCandidato(nombre) { registrarVoto('eleccion', nombre, 'Confirmar Voto de Elección'); }
+    function renderRecomendaciones(container) {
+        container.innerHTML = `
+            <h2 class="section-title">Recomendaciones</h2>
+            <p class="section-subtitle">Propuestas para la Red</p>
+            <div class="card"><div class="card-body"><p>Aquí aparecerán las recomendaciones para votar.</p></div></div>
+        `;
+    }
 
-    function registrarVoto(tipo, id, titulo) {
-        const key = tipo + '-' + id;
-        if (votedItems.has(key)) { showToast('Ya has votado por esto.', 'error'); return; }
-        pendingVoteAction = { key: key };
-        document.getElementById('modal-title').textContent = titulo;
-        document.getElementById('modal-message').textContent = '¿Estás seguro? Tu voto es definitivo.';
+    // ===== RENDERIZADO Y LÓGICA DE ELECCIONES (2 VOTOS POR GRUPO) =====
+    function renderElecciones(container) {
+        if (currentRole !== 'rover') {
+            container.innerHTML = `<h2 class="section-title">Elecciones</h2><p class="section-subtitle">Panel de supervisión</p><div class="card"><div class="card-body"><p>Los Rovers están emitiendo sus votos.</p></div></div>`;
+            return;
+        }
+
+        // Lógica de conteo de votos del grupo del usuario actual
+        const miGrupo = currentUser.grupo;
+        const votosMiGrupo = participantesDB.filter(p => p.grupo === miGrupo && p.votoEmitido).length;
+        const misVotos = parseInt(localStorage.getItem('misVotos_' + currentUser.cum) || '0');
+
+        let html = `
+            <h2 class="section-title">Elecciones de Coordinadores</h2>
+            <p class="section-subtitle">Tu grupo (<strong>${miGrupo}</strong>) tiene derecho a 2 votos. Votos emitidos por tu grupo: <strong>${votosMiGrupo}/2</strong>.</p>
+            
+            ${misVotos >= 2 ? `<div class="badge badge-success" style="margin-bottom: 15px; padding: 10px; width: 100%; text-align: center;">✅ Ya has emitido tus 2 votos permitidos.</div>` : ''}
+            ${votosMiGrupo >= 2 ? `<div class="badge badge-warning" style="margin-bottom: 15px; padding: 10px; width: 100%; text-align: center;">⚠️ Tu grupo ya ha utilizado sus 2 votos en total.</div>` : ''}
+            
+            <div class="candidates-grid">
+                ${candidatosDB.map(c => {
+                    // Verificar si el usuario ya votó por este candidato
+                    const yaVotoPorEl = localStorage.getItem('voto_' + currentUser.cum + '_' + c.nombre) === 'true';
+                    // Deshabilitar si ya votó por él, si ya usó sus 2 votos, o si el grupo ya usó sus 2 votos
+                    const disabled = yaVotoPorEl || misVotos >= 2 || votosMiGrupo >= 2;
+
+                    return `
+                        <div class="candidate-card">
+                            <div class="avatar">${c.inicial}</div>
+                            <h4>${c.nombre}</h4>
+                            <p class="group">${c.grupo}</p>
+                            <p class="propuesta">"${c.propuesta}"</p>
+                            <button class="btn-voto" ${disabled ? 'disabled' : ''} onclick="votarCandidato('${c.nombre}')">
+                                ${yaVotoPorEl ? '✅ Voto Emitido' : disabled ? 'No disponible' : '🗳️ Votar por él/ella'}
+                            </button>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+
+    function votarCandidato(nombre) {
+        const miGrupo = currentUser.grupo;
+        const votosMiGrupo = participantesDB.filter(p => p.grupo === miGrupo && p.votoEmitido).length;
+        const misVotos = parseInt(localStorage.getItem('misVotos_' + currentUser.cum) || '0');
+
+        if (misVotos >= 2 || votosMiGrupo >= 2) {
+            showToast('Límite de votos alcanzado para tu grupo.', 'error');
+            return;
+        }
+
+        pendingVoteAction = { nombre: nombre, grupo: miGrupo };
+        document.getElementById('modal-title').textContent = 'Confirmar Voto Electoral';
+        document.getElementById('modal-message').textContent = `¿Estás seguro de votar por ${nombre}? Tu grupo solo tiene 2 votos.`;
         document.getElementById('modal-overlay').classList.add('active');
     }
 
     function confirmVote() {
         if (!pendingVoteAction) return;
-        votedItems.add(pendingVoteAction.key);
+
+        // Marcar el voto en el "LocalStorage" para simular persistencia en el cliente
+        localStorage.setItem('voto_' + currentUser.cum + '_' + pendingVoteAction.nombre, 'true');
+        let misVotos = parseInt(localStorage.getItem('misVotos_' + currentUser.cum) || '0');
+        localStorage.setItem('misVotos_' + currentUser.cum, misVotos + 1);
+
+        // Buscar un participante del mismo grupo que no haya votado para marcarlo como "voto del grupo"
+        const participanteGrupo = participantesDB.find(p => p.grupo === pendingVoteAction.grupo && !p.votoEmitido);
+        if (participanteGrupo) {
+            participanteGrupo.votoEmitido = true;
+        }
+
         closeModal();
         showToast('✅ Voto registrado exitosamente.', 'success');
-        
-        // Recargar la vista actual
-        const activeBtn = document.querySelector('.sidebar button.active');
-        if (activeBtn) {
-            const section = activeBtn.getAttribute('onclick').match(/'([^']+)'/)[1];
-            showSection(section, activeBtn);
-        }
+        showSection('elecciones', document.querySelector('.sidebar button[onclick*="elecciones"]'));
     }
 
-    function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); pendingVoteAction = null; }
+    // ===== RENDERIZADO: ACTAS Y CANDIDATURAS =====
+    function renderCandidaturas(container) {
+        container.innerHTML = `
+            <h2 class="section-title">Candidatos</h2>
+            <p class="section-subtitle">Conoce a los postulados</p>
+            <div class="candidates-grid">
+                ${candidatosDB.map(c => `
+                    <div class="candidate-card">
+                        <div class="avatar">${c.inicial}</div>
+                        <h4>${c.nombre}</h4>
+                        <p class="group">${c.grupo}</p>
+                        <p class="propuesta">"${c.propuesta}"</p>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
 
+    function renderActas(container) {
+        container.innerHTML = `
+            <h2 class="section-title">Actas</h2>
+            <p class="section-subtitle">Documentos oficiales</p>
+            <div class="card"><div class="card-body"><p>El acta se generará al finalizar el foro.</p></div></div>
+        `;
+    }
+
+    // ===== MODALES Y TOAST =====
+    function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); pendingVoteAction = null; }
+    
     function showToast(msg, type) {
         const toast = document.getElementById('toast');
         toast.textContent = msg;
         toast.className = 'toast show ' + type;
-        setTimeout(() => toast.classList.remove('show'), 3000);
+        setTimeout(() => toast.classList.remove('show'), 3500);
     }
 </script>
 
